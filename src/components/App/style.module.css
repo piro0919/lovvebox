@@ -1,0 +1,74 @@
+.wrapper {
+  padding: 12px;
+  position: relative;
+}
+
+.top {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  height: 90svh;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+
+  .reactPlayer {
+    height: 100%;
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+
+  .pattern {
+    align-items: center;
+    backdrop-filter: blur(2px);
+    background-repeat: repeat;
+    color: #fff;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: absolute;
+  }
+
+  .logo {
+    aspect-ratio: 1000 / 250;
+    position: relative;
+    width: min(480px, 100%);
+  }
+
+  .h1 {
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+  }
+}
+
+.aside {
+  background: #ffcce0;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+
+  .list {
+    display: flex;
+    font-size: 1.5rem;
+    gap: 36px;
+    padding: 12px 36px;
+  }
+}
+
+.article {
+  display: grid;
+  margin: 36px;
+
+  .h2,
+  .container {
+    justify-self: center;
+    width: min(1200px, 100%);
+  }
+}
