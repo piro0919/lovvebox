@@ -8,7 +8,12 @@ export default function Footer(): JSX.Element {
     <footer className={styles.footer}>
       <Link href="/">
         <div className={styles.logo}>
-          <Image alt="ラブボックス" fill={true} quality={100} src="/logo.png" />
+          <Image
+            alt="ラブボックス"
+            fill={true}
+            quality={100}
+            src="/logo02.png"
+          />
         </div>
       </Link>
       <div className={styles.copyright}>&copy; 2021 Blackbox</div>

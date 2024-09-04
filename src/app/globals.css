@@ -8,8 +8,24 @@ html {
 }
 
 body {
-  /* https://www.colordic.org/colorsample/4232 */
-  background: #fef9fb;
+  background: linear-gradient(
+      -45deg,
+      #fef9fb99 20%,
+      transparent 20% 80%,
+      #fef9fb99 80% 100%
+    ),
+    linear-gradient(
+      45deg,
+      #fef9fb99 20%,
+      transparent 20% 80%,
+      #fef9fb99 80% 100%
+    ),
+    linear-gradient(-45deg, #fff 33%, transparent 33% 66%, #fff 66%),
+    linear-gradient(45deg, transparent 33%, #fef9fb 33% 66%, transparent 66%);
+  background-color: #fff;
+  background-size: 6rem 6rem;
+  color: #ee82a9;
+  opacity: 1;
 }
 
 * {

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP as NotoSansJP } from "next/font/google";
 import "pattern.css/dist/pattern.css";
 import "ress";
+import "swiper/css";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
@@ -10,7 +11,10 @@ const notoSansJP = NotoSansJP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   description: "会いに行けるアイドルVTuberグループ",
-  title: "ラブボックス公式サイト",
+  title: {
+    default: "ラブボックス公式サイト",
+    template: "%s - ラブボックス公式サイト",
+  },
 };
 
 export default function RootLayout({
