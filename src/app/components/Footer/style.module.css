@@ -1,0 +1,32 @@
+.footer {
+  background: #ffcce0;
+  color: #fff;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  padding: 12px 12px 36px;
+}
+
+.logo {
+  aspect-ratio: 1;
+  position: relative;
+  width: 240px;
+}
+
+.list {
+  display: flex;
+  gap: 36px;
+}
+
+.link {
+  display: flex;
+  font-size: 1.65rem;
+  gap: 6px;
+}
+
+.copyright {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 24px 0 0;
+  text-align: center;
+}

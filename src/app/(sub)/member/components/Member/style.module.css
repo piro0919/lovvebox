@@ -1,0 +1,88 @@
+.wrapper {
+  padding-bottom: 120px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @media (max-width: 980px) {
+    padding-top: 12px;
+  }
+}
+
+.h1Wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.h1 {
+  color: #fff;
+  font-size: 6rem;
+  font-weight: 700;
+  text-shadow:
+    2px 0 #ee82a9,
+    -2px 0 #ee82a9,
+    0 -2px #ee82a9,
+    0 2px #ee82a9,
+    2px 2px #ee82a9,
+    -2px 2px #ee82a9,
+    2px -2px #ee82a9,
+    -2px -2px #ee82a9,
+    1px 2px #ee82a9,
+    -1px 2px #ee82a9,
+    1px -2px #ee82a9,
+    -1px -2px #ee82a9,
+    2px 1px #ee82a9,
+    -2px 1px #ee82a9,
+    2px -1px #ee82a9,
+    -2px -1px #ee82a9,
+    6px 6px 0 rgba(238, 130, 169, 0.5);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .list {
+    display: grid;
+    gap: 36px;
+    grid-template: auto / repeat(auto-fill, minmax(320px, 1fr));
+    width: min(calc(100% - 12px * 2), 1200px);
+  }
+
+  .item {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .background {
+    background-repeat: repeat;
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 6px;
+    inset: calc(100% * 0.25) 0 0;
+    opacity: 0.75;
+    position: absolute;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 9 / 16;
+    position: absolute;
+    width: 100%;
+  }
+
+  .image {
+    filter: drop-shadow(6px 6px rgba(0, 0, 0, 0.5));
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .name {
+    color: #fff;
+    font-size: 3.6rem;
+    font-weight: 500;
+    inset: auto 0 0 auto;
+    padding: 3px 9px;
+    position: absolute;
+  }
+}

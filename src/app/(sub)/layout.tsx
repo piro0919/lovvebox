@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import SubLayout from "@/components/SubLayout";
+import LayoutComponent from "@/app/(sub)/components/Layout";
 
 export type LayoutProps = {
   children: ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  return <SubLayout>{children}</SubLayout>;
+  return <LayoutComponent>{children}</LayoutComponent>;
 }

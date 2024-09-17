@@ -1,0 +1,144 @@
+.wrapper {
+  display: grid;
+  justify-items: center;
+  padding-bottom: 120px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 60px;
+
+  @media (max-width: 980px) {
+    padding-top: 24px;
+  }
+}
+
+.container {
+  align-items: flex-start;
+  display: grid;
+  justify-items: center;
+  position: relative;
+  width: min(calc(100% - 12px * 2), 1200px);
+
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+
+    @media (640px > width) {
+      width: 320px;
+    }
+    @media (980px > width >= 640px) {
+      width: 480px;
+    }
+  }
+
+  .image {
+    filter: drop-shadow(12px 12px rgba(0, 0, 0, 0.5));
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .detail {
+    backdrop-filter: blur(1px);
+    background: rgba(255, 255, 255, 0.75);
+    border: solid 9px rgba(238, 130, 169, 0.25);
+    border-radius: 12px;
+    padding: 48px 60px 60px;
+
+    @media (980px > width) {
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 1;
+    }
+  }
+
+  .nameWrapper {
+    text-align: center;
+  }
+
+  .name {
+    color: #fff;
+    font-size: 4.8rem;
+    font-weight: 500;
+    text-shadow:
+      2px 0 #ee82a9,
+      -2px 0 #ee82a9,
+      0 -2px #ee82a9,
+      0 2px #ee82a9,
+      2px 2px #ee82a9,
+      -2px 2px #ee82a9,
+      2px -2px #ee82a9,
+      -2px -2px #ee82a9,
+      1px 2px #ee82a9,
+      -1px 2px #ee82a9,
+      1px -2px #ee82a9,
+      -1px -2px #ee82a9,
+      2px 1px #ee82a9,
+      -2px 1px #ee82a9,
+      2px -1px #ee82a9,
+      -2px -1px #ee82a9,
+      6px 6px 0 rgba(238, 130, 169, 0.5);
+  }
+
+  .furigana {
+    font-size: 1.5rem;
+    padding-top: 6px;
+  }
+
+  .profile {
+    font-size: 1.65rem;
+    padding-top: 36px;
+    white-space: pre-wrap;
+  }
+
+  .dl {
+    display: table;
+    padding-top: 30px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .di {
+    border-bottom: 1px solid #ee82a9;
+  }
+
+  .dt {
+    display: table-cell;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px;
+    position: relative;
+    width: 150px;
+  }
+
+  .dt::after {
+    background-color: #ee82a9;
+    bottom: -8px;
+    content: "";
+    height: 15px;
+    position: absolute;
+    right: 0;
+    width: 1px;
+  }
+
+  .dd {
+    display: table-cell;
+    font-size: 1.65rem;
+    padding: 15px;
+    width: calc(100% - 150px);
+  }
+
+  .socialIconsWrapper {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    padding-top: 42px;
+  }
+
+  .socialIcon {
+    height: 42px !important;
+    width: 42px !important;
+  }
+
+  @media (980px <= width) {
+    grid-template: auto / repeat(2, 1fr);
+  }
+}

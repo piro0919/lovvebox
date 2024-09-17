@@ -4,8 +4,8 @@ import { Noto_Sans_JP as NotoSansJP } from "next/font/google";
 import "pattern.css/dist/pattern.css";
 import "ress";
 import "swiper/css";
+import Layout from "./components/Layout";
 import "./globals.css";
-import Layout from "@/components/Layout";
 
 const notoSansJP = NotoSansJP({ subsets: ["latin"] });
 
