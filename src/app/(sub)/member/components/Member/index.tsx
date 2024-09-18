@@ -1,11 +1,11 @@
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
-import { Goldman, Zen_Maru_Gothic as ZenMaruGothic } from "next/font/google";
+import { Goldman, M_PLUS_1 as MPLUS1 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
-const zenMaruGothic = ZenMaruGothic({ subsets: ["latin"], weight: "500" });
+const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
 
 export type MemberProps = {
   memberListResponse: MicroCMSGetListResponse<
@@ -45,7 +45,7 @@ export default function Member({
                     />
                   </div>
                   <div
-                    className={`${zenMaruGothic.className} ${styles.name}`}
+                    className={`${mPlus1.className} ${styles.name}`}
                     style={{
                       textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
                     }}

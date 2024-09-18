@@ -7,16 +7,17 @@ import TextareaAutosize from "react-textarea-autosize";
 import validator from "validator";
 import { z } from "zod";
 import styles from "./style.module.css";
+import { div } from "framer-motion/client";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const schema = z.object({
+  approval: z.literal<boolean>(true),
   attribute: z.string().min(1),
   companyName: z.string(),
   emailAddress: z.string().email(),
   inquiryDetails: z.string().min(1),
   inquiryItem: z.string().min(1),
   name: z.string().min(1),
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   telephoneNumber: z.string().refine(validator.isMobilePhone),
 });
 
@@ -29,6 +30,7 @@ export default function Contact(): JSX.Element {
     register,
   } = useForm<FieldTypes>({
     defaultValues: {
+      approval: false,
       attribute: "individual",
       companyName: "",
       emailAddress: "",
@@ -205,10 +207,7 @@ export default function Contact(): JSX.Element {
             </div>
           </div>
           <div className={styles.formFooter}>
-            <p>
-              以上の内容でよろしければ、プライバシーポリシーに同意の上、送信してください
-            </p>
-            <label>
+            <label {...register("approval")} className={styles.checkboxLabel}>
               <input type="checkbox" />
               <span>プライバシーポリシーに同意する。</span>
             </label>

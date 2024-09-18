@@ -15,13 +15,18 @@
 
 .list {
   display: flex;
-  gap: 36px;
+  gap: 24px 36px;
+
+  @media (740px > width) {
+    flex-direction: column;
+  }
 }
 
 .link {
   display: flex;
   font-size: 1.65rem;
   gap: 6px;
+  justify-content: center;
 }
 
 .copyright {

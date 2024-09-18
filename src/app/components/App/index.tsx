@@ -4,21 +4,22 @@ import dynamic from "next/dynamic";
 import {
   Dela_Gothic_One as DelaGothicOne,
   Goldman,
-  Zen_Maru_Gothic as ZenMaruGothic,
+  M_PLUS_1 as MPLUS1,
 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
+import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import useMeasure from "react-use-measure";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
-const zenMaruGothic = ZenMaruGothic({ subsets: ["latin"], weight: "500" });
+const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 export type AppProps = {
@@ -33,14 +34,20 @@ export type AppProps = {
 export default function App({
   memberListResponse: { contents: memberListContents },
 }: AppProps): JSX.Element {
-  const reversedMemberListContents = useMemo(
-    () => memberListContents.reverse(),
-    [memberListContents]
-  );
   const [ref, { height, width }] = useMeasure();
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.corner}>
+        <div className={styles.iconWrapper}>
+          <SocialIcon
+            bgColor="transparent"
+            className={styles.socialIcon}
+            target="_blank"
+            url="https://www.youtube.com/@lovvebox"
+          />
+        </div>
+      </div>
       <div className={styles.top} ref={ref}>
         <div
           className={styles.reactPlayer}
@@ -56,8 +63,8 @@ export default function App({
             muted={true}
             playing={true}
             url={[
-              "https://www.youtube.com/watch?v=U0MtK4R-asc",
               "https://www.youtube.com/watch?v=ViIM8MuIJO8",
+              "https://www.youtube.com/watch?v=U0MtK4R-asc",
             ]}
             width="100%"
           />
@@ -180,23 +187,25 @@ export default function App({
           </div>
           <Swiper
             breakpoints={{
-              1300: {
-                slidesPerView: 4.5,
+              575: {
+                slidesPerView: 2.75,
               },
-              640: {
-                slidesPerView: 2.5,
-              },
-              980: {
-                slidesPerView: 3.5,
+              775: {
+                slidesPerView: 3.75,
                 spaceBetween: 36,
+              },
+              975: {
+                slidesPerView: 4.75,
               },
             }}
             className={styles.swiper}
-            slidesPerView={1.5}
+            modules={[Navigation]}
+            navigation={true}
+            slidesPerView={1.75}
             spaceBetween={24}
           >
-            {reversedMemberListContents.map(
-              ({ color, id, images: [{ url }], name, path }) => (
+            {memberListContents
+              .map(({ color, id, images: [{ url }], name, path }) => (
                 <SwiperSlide className={styles.swiperSlide} key={id}>
                   <Link href={`/member/${path}`}>
                     <div className={styles.imageWrapper}>
@@ -212,7 +221,7 @@ export default function App({
                         src={`${url}?fit=clamp&w=600`}
                       />
                       <div
-                        className={`${zenMaruGothic.className} ${styles.name}`}
+                        className={`${mPlus1.className} ${styles.name}`}
                         style={{
                           textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
                         }}
@@ -222,9 +231,8 @@ export default function App({
                     </div>
                   </Link>
                 </SwiperSlide>
-              )
-            )}
-            <SwiperSlide />
+              ))
+              .reverse()}
           </Swiper>
         </article>
       </main>

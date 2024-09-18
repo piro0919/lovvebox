@@ -6,12 +6,20 @@ namespace MicroCMS {
   };
 
   type Member = {
+    birthday: Date;
     color: string;
+    debut: Date;
     furigana: string;
+    graduation?: Date;
+    height: number;
     images: Image[];
+    instagramId: string;
     name: string;
     path: string;
     profile: string;
+    tiktokId: string;
+    twitterId: string;
+    youtubeId: string;
   };
 
   type News = {

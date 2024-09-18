@@ -45,7 +45,7 @@
   background: rgba(255, 255, 255, 0.75);
   border: solid 9px rgba(238, 130, 169, 0.25);
   border-radius: 12px;
-  padding: 90px;
+  padding: 48px min(60px, 4.5dvw) 60px;
   width: min(calc(100% - 12px * 2), 1200px);
 }
 
@@ -86,22 +86,29 @@
 .input,
 .textarea {
   background: #fff;
-  border: 1px solid #000;
+  border: 1px solid #ee99a0;
   font-size: 1.8rem;
-  padding: 6px;
+  padding: 12px;
 }
 
 .formFooter {
   display: grid;
-  gap: 24px;
+  font-size: 1.65rem;
+  gap: 36px;
   justify-items: center;
-  padding: 60px 0 0;
+  padding: 36px 0 0;
+  text-align: center;
+}
+
+.checkboxLabel {
+  display: flex;
+  gap: 6px;
 }
 
 .button {
-  border: 2px solid #ee82a9;
+  border: 2px solid #ee99a0;
   border-radius: 50dvmax;
-  color: #ee82a9;
+  color: #ee99a0;
   font-size: 1.8rem;
   font-weight: 700;
   padding: 12px 48px;
