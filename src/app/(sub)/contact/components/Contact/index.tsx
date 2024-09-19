@@ -7,7 +7,6 @@ import TextareaAutosize from "react-textarea-autosize";
 import validator from "validator";
 import { z } from "zod";
 import styles from "./style.module.css";
-import { div } from "framer-motion/client";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const schema = z.object({
