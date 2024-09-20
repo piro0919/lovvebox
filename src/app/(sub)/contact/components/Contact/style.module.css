@@ -5,7 +5,7 @@
   padding-left: 12px;
   padding-right: 12px;
 
-  @media (max-width: 980px) {
+  @media (width <= 980px) {
     padding-top: 12px;
   }
 }
@@ -42,7 +42,7 @@
 
 .container {
   backdrop-filter: blur(1px);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.95);
   border: solid 9px rgba(238, 130, 169, 0.25);
   border-radius: 12px;
   padding: 48px min(60px, 4.5dvw) 60px;

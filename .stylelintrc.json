@@ -18,12 +18,13 @@
         ]
       }
     ],
+    "media-feature-range-notation": "context",
     "order/order": [
       "custom-properties",
       "dollar-variables",
       "declarations",
-      "rules",
-      "at-rules"
+      "at-rules",
+      "rules"
     ],
     "order/properties-alphabetical-order": true,
     "plugin/declaration-block-no-ignored-properties": true,

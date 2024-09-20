@@ -2,7 +2,7 @@ html {
   @media (width < 740px) {
     font-size: 56.25%;
   }
-  @media (740px <= width) {
+  @media (width >= 740px) {
     font-size: 62.5%;
   }
 }
@@ -20,9 +20,9 @@ body {
       transparent 20% 80%,
       #fef9fb99 80% 100%
     ),
-    linear-gradient(-45deg, #fff 33%, transparent 33% 66%, #fff 66%),
+    linear-gradient(-45deg, #f5f5f5 33%, transparent 33% 66%, #f5f5f5 66%),
     linear-gradient(45deg, transparent 33%, #fef9fb 33% 66%, transparent 66%);
-  background-color: #fff;
+  background-color: #f5f5f5;
   background-size: 6rem 6rem;
   color: #ee99a0;
   opacity: 1;

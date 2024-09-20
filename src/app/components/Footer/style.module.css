@@ -4,7 +4,7 @@
   display: grid;
   justify-content: center;
   justify-items: center;
-  padding: 12px 12px 36px;
+  padding: 12px 12px 48px;
 }
 
 .logo {
@@ -17,7 +17,7 @@
   display: flex;
   gap: 24px 36px;
 
-  @media (740px > width) {
+  @media (width < 740px) {
     flex-direction: column;
   }
 }
@@ -25,6 +25,7 @@
 .link {
   display: flex;
   font-size: 1.65rem;
+  font-weight: 700;
   gap: 6px;
   justify-content: center;
 }
@@ -32,6 +33,6 @@
 .copyright {
   font-size: 1.5rem;
   font-weight: 700;
-  padding: 24px 0 0;
+  padding: 36px 0 0;
   text-align: center;
 }

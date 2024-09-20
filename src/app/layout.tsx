@@ -2,7 +2,7 @@
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import type { Metadata } from "next";
-import { Noto_Sans_JP as NotoSansJP } from "next/font/google";
+import { M_PLUS_1 as MPLUS1 } from "next/font/google";
 import "pattern.css/dist/pattern.css";
 import "ress";
 import "swiper/css";
@@ -12,7 +12,7 @@ import "./globals.css";
 
 dayjs.locale("ja");
 
-const notoSansJP = NotoSansJP({ subsets: ["latin"] });
+const mPlus1 = MPLUS1({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   description: "会いに行けるアイドルVTuberグループ",
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="ja">
-      <body className={notoSansJP.className}>
+      <body className={mPlus1.className}>
         <Layout>{children}</Layout>
       </body>
     </html>
