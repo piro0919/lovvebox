@@ -6,6 +6,7 @@ import useShowWindowSize from "use-show-window-size";
 import { z } from "zod";
 import { zodI18nMap } from "zod-i18n-map";
 import translation from "zod-i18n-map/locales/ja/zod.json";
+import Drawer from "../Drawer";
 import Footer from "../Footer";
 import styles from "./style.module.css";
 
@@ -29,6 +30,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
 
   return (
     <>
+      <Drawer />
       <div className={styles.wrapper}>
         <div>{children}</div>
         <Footer />

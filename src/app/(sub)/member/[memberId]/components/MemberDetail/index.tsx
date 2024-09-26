@@ -2,7 +2,7 @@
 import dayjs from "dayjs";
 import { quintOut } from "eases";
 import { motion } from "framer-motion";
-import { MicroCMSGetListResponse } from "microcms-ts-sdk";
+import { MicroCMSContentId, MicroCMSDate } from "microcms-ts-sdk";
 import { Zen_Maru_Gothic as ZenMaruGothic } from "next/font/google";
 import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
@@ -11,32 +11,27 @@ import styles from "./style.module.css";
 const zenMaruGothic = ZenMaruGothic({ subsets: ["latin"], weight: "500" });
 
 export type MemberDetailProps = {
-  memberListResponse: MicroCMSGetListResponse<
-    MicroCMS.Endpoints,
-    {
-      endpoint: "member";
-    }
-  >;
+  memberListDetailResponse: MicroCMS.Member &
+    MicroCMSContentId &
+    MicroCMSDate & {
+      [key: string]: unknown;
+    };
 };
 
 export default function MemberDetail({
-  memberListResponse: {
-    contents: [
-      {
-        birthday,
-        debut,
-        furigana,
-        graduation,
-        height,
-        images: [{ height: imageHeight, url, width }],
-        instagramId,
-        name,
-        profile,
-        tiktokId,
-        twitterId,
-        youtubeId,
-      },
-    ],
+  memberListDetailResponse: {
+    birthday,
+    debut,
+    furigana,
+    graduation,
+    height,
+    images: [{ height: imageHeight, url, width }],
+    instagramId,
+    name,
+    profile,
+    tiktokId,
+    twitterId,
+    youtubeId,
   },
 }: MemberDetailProps): JSX.Element {
   return (
@@ -61,7 +56,7 @@ export default function MemberDetail({
               className={styles.image}
               fill={true}
               quality={100}
-              src={`${url}?fit=clamp&w=600`}
+              src={`${url}?fit=clamp&w=1000`}
             />
           </div>
         </motion.div>

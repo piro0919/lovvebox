@@ -28,21 +28,23 @@ export default function Member({
         <ul className={styles.list}>
           {memberListContents
             .reverse()
-            .map(({ color, id, images: [{ url }], name, path }) => (
+            .map(({ color, id, images: [{ url }], name }) => (
               <li className={styles.item} key={id}>
-                <Link href={`/member/${path}`}>
+                <Link className={styles.link} href={`/member/${id}`}>
                   <div
-                    className={`${styles.background} pattern-diagonal-stripes-md`}
-                    style={{ borderColor: color, color }}
+                    className={styles.background}
+                    style={{ background: color }}
                   />
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      alt={name}
-                      className={styles.image}
-                      fill={true}
-                      quality={100}
-                      src={`${url}?fit=clamp&w=600`}
-                    />
+                  <div className={styles.imageContainer}>
+                    <div className={styles.imageWrapper}>
+                      <Image
+                        alt={name}
+                        className={styles.image}
+                        fill={true}
+                        quality={100}
+                        src={`${url}?fit=clamp&w=1000`}
+                      />
+                    </div>
                   </div>
                   <div
                     className={`${mPlus1.className} ${styles.name}`}

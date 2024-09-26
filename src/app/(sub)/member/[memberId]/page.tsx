@@ -14,7 +14,8 @@ type PageProps = {
 export default async function Page({
   params: { memberId },
 }: PageProps): Promise<JSX.Element> {
-  const memberListResponse = await client.getList({
+  const memberListDetailResponse = await client.getListDetail({
+    contentId: memberId,
     customRequestInit: {
       next: {
         // 24 時間ごと
@@ -22,10 +23,7 @@ export default async function Page({
       },
     },
     endpoint: "member",
-    queries: {
-      filters: `path[equals]${memberId}`,
-    },
   });
 
-  return <MemberDetail memberListResponse={memberListResponse} />;
+  return <MemberDetail memberListDetailResponse={memberListDetailResponse} />;
 }

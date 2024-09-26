@@ -1,5 +1,6 @@
 .footer {
-  background: #ffcce0;
+  backdrop-filter: blur(1px);
+  background: rgba(255, 204, 224, 0.95);
   color: #fff;
   display: grid;
   justify-content: center;
@@ -10,7 +11,7 @@
 .logo {
   aspect-ratio: 1;
   position: relative;
-  width: 240px;
+  width: min(300px, 45dvw);
 }
 
 .list {

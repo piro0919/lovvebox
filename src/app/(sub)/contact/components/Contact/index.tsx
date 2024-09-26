@@ -2,6 +2,7 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Goldman } from "next/font/google";
+import Link from "next/link";
 import { Form, useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
 import validator from "validator";
@@ -78,7 +79,6 @@ export default function Contact(): JSX.Element {
                   </label>
                 </div>
               </div>
-              <ErrorMessage errors={errors} name="attribute" />
             </fieldset>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="companyName">
@@ -90,7 +90,6 @@ export default function Contact(): JSX.Element {
                 id="companyName"
                 placeholder="株式会社◯◯"
               />
-              <ErrorMessage errors={errors} name="companyName" />
             </div>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="name">
@@ -102,7 +101,13 @@ export default function Contact(): JSX.Element {
                 id="name"
                 placeholder="◯◯"
               />
-              <ErrorMessage errors={errors} name="name" />
+              <ErrorMessage
+                errors={errors}
+                name="name"
+                render={({ message }) => (
+                  <p className={styles.errorMessage}>{message}</p>
+                )}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="telephoneNumber">
@@ -114,7 +119,13 @@ export default function Contact(): JSX.Element {
                 id="telephoneNumber"
                 placeholder="08012345678"
               />
-              <ErrorMessage errors={errors} name="telephoneNumber" />
+              <ErrorMessage
+                errors={errors}
+                name="telephoneNumber"
+                render={({ message }) => (
+                  <p className={styles.errorMessage}>{message}</p>
+                )}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="emailAddress">
@@ -126,7 +137,13 @@ export default function Contact(): JSX.Element {
                 id="emailAddress"
                 placeholder="sample@example.com"
               />
-              <ErrorMessage errors={errors} name="emailAddress" />
+              <ErrorMessage
+                errors={errors}
+                name="emailAddress"
+                render={({ message }) => (
+                  <p className={styles.errorMessage}>{message}</p>
+                )}
+              />
             </div>
             <fieldset className={styles.fieldset}>
               <legend className={styles.legend}>
@@ -189,7 +206,6 @@ export default function Contact(): JSX.Element {
                   </label>
                 </div>
               </div>
-              <ErrorMessage errors={errors} name="inquiryItem" />
             </fieldset>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="inquiryDetails">
@@ -202,13 +218,28 @@ export default function Contact(): JSX.Element {
                 minRows={10}
                 placeholder="お問い合わせ内容を詳細にご入力ください。"
               />
-              <ErrorMessage errors={errors} name="inquiryDetails" />
+              <ErrorMessage
+                errors={errors}
+                name="inquiryDetails"
+                render={({ message }) => (
+                  <p className={styles.errorMessage}>{message}</p>
+                )}
+              />
             </div>
           </div>
           <div className={styles.formFooter}>
             <label {...register("approval")} className={styles.checkboxLabel}>
               <input type="checkbox" />
-              <span>プライバシーポリシーに同意する。</span>
+              <span>
+                <Link
+                  className={styles.link}
+                  href="/privacy-policy"
+                  target="_blank"
+                >
+                  プライバシーポリシー
+                </Link>
+                に同意する。
+              </span>
             </label>
             <button className={styles.button} type="submit">
               確認画面へ

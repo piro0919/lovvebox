@@ -21,23 +21,27 @@
   font-size: 6rem;
   font-weight: 700;
   text-shadow:
-    2px 0 #ee82a9,
-    -2px 0 #ee82a9,
-    0 -2px #ee82a9,
-    0 2px #ee82a9,
-    2px 2px #ee82a9,
-    -2px 2px #ee82a9,
-    2px -2px #ee82a9,
-    -2px -2px #ee82a9,
-    1px 2px #ee82a9,
-    -1px 2px #ee82a9,
-    1px -2px #ee82a9,
-    -1px -2px #ee82a9,
-    2px 1px #ee82a9,
-    -2px 1px #ee82a9,
-    2px -1px #ee82a9,
-    -2px -1px #ee82a9,
+    2px 0 var(--color-theme-main),
+    -2px 0 var(--color-theme-main),
+    0 -2px var(--color-theme-main),
+    0 2px var(--color-theme-main),
+    2px 2px var(--color-theme-main),
+    -2px 2px var(--color-theme-main),
+    2px -2px var(--color-theme-main),
+    -2px -2px var(--color-theme-main),
+    1px 2px var(--color-theme-main),
+    -1px 2px var(--color-theme-main),
+    1px -2px var(--color-theme-main),
+    -1px -2px var(--color-theme-main),
+    2px 1px var(--color-theme-main),
+    -2px 1px var(--color-theme-main),
+    2px -1px var(--color-theme-main),
+    -2px -1px var(--color-theme-main),
     6px 6px 0 rgba(238, 130, 169, 0.5);
+
+  @media (width <= 980px) {
+    font-size: 3.6rem;
+  }
 }
 
 .container {
@@ -86,9 +90,14 @@
 .input,
 .textarea {
   background: #fff;
-  border: 1px solid #ee99a0;
+  border: 1px solid var(--color-theme-main);
+  color: var(--color-theme-main);
   font-size: 1.8rem;
   padding: 12px;
+}
+
+.errorMessage {
+  font-size: 1.65rem;
 }
 
 .formFooter {
@@ -96,7 +105,7 @@
   font-size: 1.65rem;
   gap: 36px;
   justify-items: center;
-  padding: 36px 0 0;
+  padding: 48px 0 0;
   text-align: center;
 }
 
@@ -105,10 +114,14 @@
   gap: 6px;
 }
 
+.link {
+  text-decoration: underline;
+}
+
 .button {
-  border: 2px solid #ee99a0;
+  border: 2px solid var(--color-theme-main);
   border-radius: 50dvmax;
-  color: #ee99a0;
+  color: var(--color-theme-main);
   font-size: 1.8rem;
   font-weight: 700;
   padding: 12px 48px;

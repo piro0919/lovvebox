@@ -1,18 +1,21 @@
-import fs from "fs";
-import path from "path";
 import { Metadata } from "next";
 import Guidelines from "./components/Guidelines";
-
-// 24 時間ごと
-export const revalidate = 86400;
+import client from "@/utils/client";
 
 export const metadata: Metadata = {
   title: "GUIDELINES",
 };
 
-export default function Page(): JSX.Element {
-  const filePath = path.join(process.cwd(), "public", "guidelines.md");
-  const fileContent = fs.readFileSync(filePath, "utf8");
+export default async function Page(): Promise<JSX.Element> {
+  const documentObjectResponse = await client.getObject({
+    customRequestInit: {
+      next: {
+        // 24 時間ごと
+        revalidate: 86400,
+      },
+    },
+    endpoint: "document",
+  });
 
-  return <Guidelines fileContent={fileContent} />;
+  return <Guidelines documentObjectResponse={documentObjectResponse} />;
 }

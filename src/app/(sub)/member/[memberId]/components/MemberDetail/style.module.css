@@ -72,22 +72,22 @@
     font-size: 5.4rem;
     font-weight: 500;
     text-shadow:
-      2px 0 #ee82a9,
-      -2px 0 #ee82a9,
-      0 -2px #ee82a9,
-      0 2px #ee82a9,
-      2px 2px #ee82a9,
-      -2px 2px #ee82a9,
-      2px -2px #ee82a9,
-      -2px -2px #ee82a9,
-      1px 2px #ee82a9,
-      -1px 2px #ee82a9,
-      1px -2px #ee82a9,
-      -1px -2px #ee82a9,
-      2px 1px #ee82a9,
-      -2px 1px #ee82a9,
-      2px -1px #ee82a9,
-      -2px -1px #ee82a9,
+      2px 0 var(--color-theme-main),
+      -2px 0 var(--color-theme-main),
+      0 -2px var(--color-theme-main),
+      0 2px var(--color-theme-main),
+      2px 2px var(--color-theme-main),
+      -2px 2px var(--color-theme-main),
+      2px -2px var(--color-theme-main),
+      -2px -2px var(--color-theme-main),
+      1px 2px var(--color-theme-main),
+      -1px 2px var(--color-theme-main),
+      1px -2px var(--color-theme-main),
+      -1px -2px var(--color-theme-main),
+      2px 1px var(--color-theme-main),
+      -2px 1px var(--color-theme-main),
+      2px -1px var(--color-theme-main),
+      -2px -1px var(--color-theme-main),
       6px 6px 0 rgba(238, 130, 169, 0.5);
   }
 

@@ -5,6 +5,13 @@ namespace MicroCMS {
     width: number;
   };
 
+  type Document = {
+    faq: string;
+    guidelines: string;
+    movie: string;
+    privacypolicy: string;
+  };
+
   type Member = {
     birthday: Date;
     color: string;
@@ -15,7 +22,6 @@ namespace MicroCMS {
     images: Image[];
     instagramId: string;
     name: string;
-    path: string;
     profile: string;
     tiktokId: string;
     twitterId: string;
@@ -23,6 +29,7 @@ namespace MicroCMS {
   };
 
   type News = {
+    content: string;
     title: string;
   };
 
@@ -31,6 +38,8 @@ namespace MicroCMS {
       member: Member;
       news: News;
     };
-    object: {};
+    object: {
+      document: Document;
+    };
   };
 }

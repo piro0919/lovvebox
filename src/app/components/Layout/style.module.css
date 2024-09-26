@@ -16,7 +16,7 @@
 }
 
 .wrapper::before {
-  background: #ffcce0;
+  background: var(--color-theme-frame);
   border: solid 12px transparent;
   border-radius: 24px;
   mask:
@@ -26,5 +26,5 @@
 }
 
 .wrapper::after {
-  border: solid 12px #ffcce0;
+  border: solid 12px var(--color-theme-frame);
 }

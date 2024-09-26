@@ -1,0 +1,23 @@
+.drawer {
+  backdrop-filter: blur(1px) !important;
+  background: rgba(255, 204, 224, 0.95) !important;
+  height: auto !important;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  font-weight: 700;
+  gap: 36px;
+  padding: 72px 0;
+}
+
+.link {
+  color: #fff;
+  display: flex;
+  gap: 6px;
+  letter-spacing: 0.1rem;
+  text-shadow: 3px 3px var(--color-theme-main);
+}

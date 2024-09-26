@@ -3,10 +3,14 @@
   background: rgb(255, 204, 224, 0.95);
   color: #fff;
   margin: 0 12px;
-  padding: 12px 36px 12px 12px;
+  padding: 12px 36px 12px 18px;
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 2;
+
+  @media (width <= 980px) {
+    padding: 6px;
+  }
 
   .nav {
     align-items: center;
@@ -18,7 +22,6 @@
     font-size: 1.65rem;
     font-weight: 700;
     gap: 36px;
-    text-shadow: 3px 3px #ee99a0;
 
     @media (width <= 980px) {
       display: none;
@@ -29,5 +32,12 @@
     display: flex;
     gap: 6px;
     letter-spacing: 0.1rem;
+    text-shadow: 3px 3px var(--color-theme-main);
+  }
+
+  .hamburger {
+    @media (width > 980px) {
+      display: none;
+    }
   }
 }

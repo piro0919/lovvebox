@@ -1,5 +1,6 @@
 "use client";
-import { MicroCMSGetListResponse } from "microcms-ts-sdk";
+import Hamburger from "hamburger-react";
+import { MicroCMSDate, MicroCMSGetListResponse } from "microcms-ts-sdk";
 import dynamic from "next/dynamic";
 import {
   Dela_Gothic_One as DelaGothicOne,
@@ -15,7 +16,9 @@ import Spacer from "react-spacer";
 import useMeasure from "react-use-measure";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
+import useDrawerStore from "@/stores/useDrawerStore";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
@@ -23,6 +26,10 @@ const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 export type AppProps = {
+  documentObjectResponse: MicroCMS.Document &
+    MicroCMSDate & {
+      [key: string]: unknown;
+    };
   memberListResponse: MicroCMSGetListResponse<
     MicroCMS.Endpoints,
     {
@@ -32,9 +39,13 @@ export type AppProps = {
 };
 
 export default function App({
+  documentObjectResponse: { movie },
   memberListResponse: { contents: memberListContents },
 }: AppProps): JSX.Element {
   const [ref, { height, width }] = useMeasure();
+  const { toggle, toggled } = useDrawerStore(
+    useShallow((state) => ({ toggle: state.toggle, toggled: state.toggled }))
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -62,10 +73,7 @@ export default function App({
             loop={true}
             muted={true}
             playing={true}
-            url={[
-              "https://www.youtube.com/watch?v=ViIM8MuIJO8",
-              "https://www.youtube.com/watch?v=U0MtK4R-asc",
-            ]}
+            url={movie.split(/\n/).filter((v) => v)}
             width="100%"
           />
         </div>
@@ -113,6 +121,14 @@ export default function App({
             <li>
               <Link
                 className={`${delaGothicOne.className} ${styles.link}`}
+                href="/faq"
+              >
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`${delaGothicOne.className} ${styles.link}`}
                 href="https://lovvebox.booth.pm/"
                 target="_blank"
               >
@@ -129,9 +145,29 @@ export default function App({
               </Link>
             </li>
           </ul>
+          <div className={styles.hamburger}>
+            <Hamburger toggle={toggle} toggled={toggled} />
+          </div>
         </nav>
       </aside>
       <main>
+        <article className={styles.article} data-article="about">
+          <div className={styles.h2Wrapper}>
+            <h2 className={`${goldman.className} ${styles.h2}`}>ABOUT</h2>
+          </div>
+          <div className={styles.container}>
+            <p className={styles.description}>
+              『ラブボックス』は、リアルかわいいを追求した女性アイドルVTuberグループ及びそれを運営するプロダクションです。
+              <br />
+              ラブボックスという名前は、アイドルたちが同じ箱の元で愛を持って接し、支え合いながら夢を追いかけてほしいという想いに由来しています。
+              <br />
+              アイドルたちは、それぞれが理想のアイドル像をもっています。当プロダクションでは、理想のアイドルになるまでの物語を、ファンの皆様とともに見守り、支えていきたいと考えています。
+            </p>
+            <div className={styles.imageWrapper}>
+              <Image alt="about" fill={true} src="/about.jpg" />
+            </div>
+          </div>
+        </article>
         <article className={styles.article} data-article="news">
           <div className={styles.h2Wrapper}>
             <h2 className={`${goldman.className} ${styles.h2}`}>NEWS</h2>
@@ -202,32 +238,36 @@ export default function App({
             modules={[Navigation]}
             navigation={true}
             slidesPerView={1.75}
-            spaceBetween={24}
+            spaceBetween={36}
           >
             {memberListContents
-              .map(({ color, id, images: [{ url }], name, path }) => (
-                <SwiperSlide className={styles.swiperSlide} key={id}>
-                  <Link href={`/member/${path}`}>
+              .map(({ color, id, images: [{ url }], name }, index) => (
+                <SwiperSlide
+                  className={styles.swiperSlide}
+                  key={id}
+                  style={{ zIndex: index }}
+                >
+                  <Link className={styles.link} href={`/member/${id}`}>
+                    <div
+                      className={styles.background}
+                      style={{ background: color }}
+                    />
                     <div className={styles.imageWrapper}>
-                      <div
-                        className={`${styles.background} pattern-diagonal-stripes-md`}
-                        style={{ borderColor: color, color }}
-                      />
                       <Image
                         alt={name}
                         className={styles.image}
                         fill={true}
                         quality={100}
-                        src={`${url}?fit=clamp&w=600`}
+                        src={`${url}?fit=clamp&w=1000`}
                       />
-                      <div
-                        className={`${mPlus1.className} ${styles.name}`}
-                        style={{
-                          textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
-                        }}
-                      >
-                        {name}
-                      </div>
+                    </div>
+                    <div
+                      className={`${mPlus1.className} ${styles.name}`}
+                      style={{
+                        textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
+                      }}
+                    >
+                      {name}
                     </div>
                   </Link>
                 </SwiperSlide>

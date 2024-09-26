@@ -1,3 +1,4 @@
+import { MicroCMSDate } from "microcms-ts-sdk";
 import { Goldman } from "next/font/google";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -8,11 +9,14 @@ import styles from "./style.module.css";
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
 export type PrivacyPolicyProps = {
-  fileContent: string;
+  documentObjectResponse: MicroCMS.Document &
+    MicroCMSDate & {
+      [key: string]: unknown;
+    };
 };
 
 export default function PrivacyPolicy({
-  fileContent,
+  documentObjectResponse: { privacypolicy },
 }: PrivacyPolicyProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
@@ -29,7 +33,7 @@ export default function PrivacyPolicy({
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkBreaks, remarkGfm]}
         >
-          {fileContent}
+          {privacypolicy}
         </ReactMarkdown>
       </div>
     </div>
