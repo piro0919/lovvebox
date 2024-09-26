@@ -1,10 +1,13 @@
 "use client";
 import { ErrorMessage } from "@hookform/error-message";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { backOut } from "eases";
+import { motion } from "framer-motion";
 import { Goldman } from "next/font/google";
 import Link from "next/link";
 import { Form, useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
+import { useBoolean } from "usehooks-ts";
 import validator from "validator";
 import { z } from "zod";
 import styles from "./style.module.css";
@@ -42,9 +45,19 @@ export default function Contact(): JSX.Element {
     progressive: true,
     resolver: zodResolver(schema),
   });
+  const { setTrue: onIsAgree, value: isAgree } = useBoolean(false);
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className={styles.wrapper}
+      initial={{ opacity: 0, y: 48 }}
+      transition={{
+        delay: 0.5,
+        duration: 0.5,
+        ease: backOut,
+      }}
+    >
       <div className={styles.h1Wrapper}>
         <h1 className={`${goldman.className} ${styles.h1}`}>CONTACT</h1>
       </div>
@@ -229,11 +242,12 @@ export default function Contact(): JSX.Element {
           </div>
           <div className={styles.formFooter}>
             <label {...register("approval")} className={styles.checkboxLabel}>
-              <input type="checkbox" />
+              <input disabled={!isAgree} type="checkbox" />
               <span>
                 <Link
                   className={styles.link}
                   href="/privacy-policy"
+                  onClick={() => onIsAgree()}
                   target="_blank"
                 >
                   プライバシーポリシー
@@ -247,6 +261,6 @@ export default function Contact(): JSX.Element {
           </div>
         </Form>
       </div>
-    </div>
+    </motion.div>
   );
 }

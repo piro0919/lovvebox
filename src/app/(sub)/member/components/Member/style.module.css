@@ -11,7 +11,7 @@
 .h1Wrapper {
   display: flex;
   justify-content: center;
-  padding: 60px 0;
+  padding: 90px 0;
 }
 
 .h1 {
@@ -44,9 +44,9 @@
 
   .list {
     display: grid;
-    gap: 0 36px;
-    grid-template: auto / repeat(auto-fill, minmax(320px, 1fr));
-    width: min(calc(100% - 12px * 2), 1200px);
+    gap: 0 min(36px, 4.5dvw);
+    grid-template: auto / repeat(auto-fill, minmax(315px, 1fr));
+    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
   }
 
   .item {

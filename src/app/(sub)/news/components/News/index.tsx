@@ -1,35 +1,47 @@
+"use client";
+import dayjs from "dayjs";
+import { backOut } from "eases";
+import { motion } from "framer-motion";
+import { MicroCMSGetListResponse } from "microcms-ts-sdk";
 import { Goldman } from "next/font/google";
 import Link from "next/link";
 import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
-export default function News(): JSX.Element {
+export type NewsProps = {
+  newsListResponse: MicroCMSGetListResponse<
+    MicroCMS.Endpoints,
+    {
+      endpoint: "news";
+    }
+  >;
+};
+
+export default function News({
+  newsListResponse: { contents: newsListContents },
+}: NewsProps): JSX.Element {
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className={styles.wrapper}
+      initial={{ opacity: 0, y: 48 }}
+      transition={{
+        delay: 0.5,
+        duration: 0.5,
+        ease: backOut,
+      }}
+    >
       <div className={styles.h1Wrapper}>
         <h1 className={`${goldman.className} ${styles.h1}`}>NEWS</h1>
       </div>
       <div className={styles.container}>
         <ul className={styles.list}>
-          {[
-            {
-              date: "2024.08.29",
-              title: "ラブボックス9月期の活動について",
-            },
-            {
-              date: "2024.08.13",
-              title: "「夜燈ちゆ」卒業に関するお知らせ",
-            },
-            {
-              date: "2024.08.13",
-              title: "「ラブボックス2ndライブ」グッズ事後販売開始のお知らせ",
-            },
-          ].map(({ date, title }) => (
+          {newsListContents.map(({ createdAt, id, publishedAt, title }) => (
             <li key={title}>
-              <Link className={styles.link} href="/news">
+              <Link className={styles.link} href={`/news/${id}`}>
                 <div className={`${goldman.className} ${styles.date}`}>
-                  {date}
+                  {dayjs(publishedAt ?? createdAt).format("YYYY.MM.DD")}
                 </div>
                 <div className={styles.title}>{title}</div>
               </Link>
@@ -37,6 +49,6 @@ export default function News(): JSX.Element {
           ))}
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }

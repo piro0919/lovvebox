@@ -1,3 +1,4 @@
+import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
 import { Dela_Gothic_One as DelaGothicOne } from "next/font/google";
 import Link from "next/link";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
@@ -15,6 +16,8 @@ export default function Drawer(): JSX.Element {
       toggled: state.toggled,
     }))
   );
+
+  useLockBodyScroll(toggled);
 
   return (
     <ReactModernDrawer

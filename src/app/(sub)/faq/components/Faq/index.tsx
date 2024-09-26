@@ -11,16 +11,16 @@ import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
-export type GuidelinesProps = {
+export type FaqProps = {
   documentObjectResponse: MicroCMS.Document &
     MicroCMSDate & {
       [key: string]: unknown;
     };
 };
 
-export default function Guidelines({
-  documentObjectResponse: { guidelines },
-}: GuidelinesProps): JSX.Element {
+export default function Faq({
+  documentObjectResponse: { faq },
+}: FaqProps): JSX.Element {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export default function Guidelines({
       }}
     >
       <div className={styles.h1Wrapper}>
-        <h1 className={`${goldman.className} ${styles.h1}`}>GUIDELINES</h1>
+        <h1 className={`${goldman.className} ${styles.h1}`}>FAQ</h1>
       </div>
       <div className={styles.container}>
         <ReactMarkdown
@@ -45,7 +45,7 @@ export default function Guidelines({
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkBreaks, remarkGfm]}
         >
-          {guidelines}
+          {faq}
         </ReactMarkdown>
       </div>
     </motion.div>

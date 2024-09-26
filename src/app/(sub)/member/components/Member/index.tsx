@@ -1,3 +1,6 @@
+"use client";
+import { backOut } from "eases";
+import { motion } from "framer-motion";
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
 import { Goldman, M_PLUS_1 as MPLUS1 } from "next/font/google";
 import Image from "next/image";
@@ -20,15 +23,23 @@ export default function Member({
   memberListResponse: { contents: memberListContents },
 }: MemberProps): JSX.Element {
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className={styles.wrapper}
+      initial={{ opacity: 0, y: 48 }}
+      transition={{
+        delay: 0.5,
+        duration: 0.5,
+        ease: backOut,
+      }}
+    >
       <div className={styles.h1Wrapper}>
         <h1 className={`${goldman.className} ${styles.h1}`}>MEMBER</h1>
       </div>
       <div className={styles.container}>
         <ul className={styles.list}>
           {memberListContents
-            .reverse()
-            .map(({ color, id, images: [{ url }], name }) => (
+            .map(({ color, id, images: [{ url }], name }, index) => (
               <li className={styles.item} key={id}>
                 <Link className={styles.link} href={`/member/${id}`}>
                   <div
@@ -36,7 +47,16 @@ export default function Member({
                     style={{ background: color }}
                   />
                   <div className={styles.imageContainer}>
-                    <div className={styles.imageWrapper}>
+                    <motion.div
+                      animate={{ opacity: 1, scale: 1 }}
+                      className={styles.imageWrapper}
+                      initial={{ opacity: 0, scale: 0.75 }}
+                      transition={{
+                        delay: 0.5 + (memberListContents.length - index) * 0.1,
+                        duration: 0.5,
+                        ease: backOut,
+                      }}
+                    >
                       <Image
                         alt={name}
                         className={styles.image}
@@ -44,7 +64,7 @@ export default function Member({
                         quality={100}
                         src={`${url}?fit=clamp&w=1000`}
                       />
-                    </div>
+                    </motion.div>
                   </div>
                   <div
                     className={`${mPlus1.className} ${styles.name}`}
@@ -56,9 +76,10 @@ export default function Member({
                   </div>
                 </Link>
               </li>
-            ))}
+            ))
+            .reverse()}
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }

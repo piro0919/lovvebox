@@ -1,10 +1,12 @@
 "use client";
 import dayjs from "dayjs";
-import { quintOut } from "eases";
+import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-ts-sdk";
 import { Zen_Maru_Gothic as ZenMaruGothic } from "next/font/google";
 import Image from "next/image";
+import { useMemo, useState } from "react";
+import { IoMdRefreshCircle } from "react-icons/io";
 import { SocialIcon } from "react-social-icons";
 import styles from "./style.module.css";
 
@@ -25,7 +27,7 @@ export default function MemberDetail({
     furigana,
     graduation,
     height,
-    images: [{ height: imageHeight, url, width }],
+    images,
     instagramId,
     name,
     profile,
@@ -34,22 +36,42 @@ export default function MemberDetail({
     youtubeId,
   },
 }: MemberDetailProps): JSX.Element {
+  const [index, setIndex] = useState(0);
+  const {
+    height: imageHeight,
+    url,
+    width,
+  } = useMemo(() => images[index], [images, index]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
+        <button
+          className={styles.refreshButton}
+          onClick={() =>
+            setIndex((prevIndex) =>
+              prevIndex + 1 === images.length ? 0 : prevIndex + 1
+            )
+          }
+        >
+          <IoMdRefreshCircle size={48} />
+        </button>
         <motion.div
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, y: 0 }}
           className={styles.imageContainer}
-          initial={{ opacity: 0, scale: 0.75 }}
+          initial={{ opacity: 0, y: 48 }}
+          key={index}
           transition={{
             delay: 0.5,
-            duration: 0.75,
-            ease: quintOut,
+            duration: 0.5,
+            ease: backOut,
           }}
         >
           <div
             className={styles.imageWrapper}
-            style={{ aspectRatio: `${width}/${imageHeight}` }}
+            style={{
+              aspectRatio: `${width}/${imageHeight}`,
+            }}
           >
             <Image
               alt={name}
@@ -60,7 +82,16 @@ export default function MemberDetail({
             />
           </div>
         </motion.div>
-        <div className={styles.detail}>
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          className={styles.detail}
+          initial={{ opacity: 0, y: 48 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.5,
+            ease: backOut,
+          }}
+        >
           <div className={styles.nameWrapper}>
             <h1 className={`${zenMaruGothic.className} ${styles.name}`}>
               {name}
@@ -114,7 +145,7 @@ export default function MemberDetail({
               url={`https://www.tiktok.com/${tiktokId}`}
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

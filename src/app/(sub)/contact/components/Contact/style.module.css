@@ -13,7 +13,7 @@
 .h1Wrapper {
   display: flex;
   justify-content: center;
-  padding: 60px 0;
+  padding: 90px 0;
 }
 
 .h1 {
@@ -50,7 +50,7 @@
   border: solid 9px rgba(238, 130, 169, 0.25);
   border-radius: 12px;
   padding: 48px min(60px, 4.5dvw) 60px;
-  width: min(calc(100% - 12px * 2), 1200px);
+  width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
 }
 
 .fieldWrapper {

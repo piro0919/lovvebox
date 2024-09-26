@@ -11,7 +11,7 @@
 .logo {
   aspect-ratio: 1;
   position: relative;
-  width: min(300px, 45dvw);
+  width: min(240px, 45dvw);
 }
 
 .list {

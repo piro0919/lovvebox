@@ -1,3 +1,6 @@
+"use client";
+import { backOut } from "eases";
+import { motion } from "framer-motion";
 import { MicroCMSDate } from "microcms-ts-sdk";
 import { Goldman } from "next/font/google";
 import ReactMarkdown from "react-markdown";
@@ -19,7 +22,16 @@ export default function PrivacyPolicy({
   documentObjectResponse: { privacypolicy },
 }: PrivacyPolicyProps): JSX.Element {
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className={styles.wrapper}
+      initial={{ opacity: 0, y: 48 }}
+      transition={{
+        delay: 0.5,
+        duration: 0.5,
+        ease: backOut,
+      }}
+    >
       <div className={styles.h1Wrapper}>
         <h1 className={`${goldman.className} ${styles.h1}`}>PRIVACY POLICY</h1>
       </div>
@@ -36,6 +48,6 @@ export default function PrivacyPolicy({
           {privacypolicy}
         </ReactMarkdown>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -14,7 +14,6 @@
 .container {
   align-items: flex-start;
   display: grid;
-  overflow-x: hidden;
   padding-bottom: 12px;
   position: relative;
 
@@ -24,19 +23,34 @@
 
   @media (width >= 980px) {
     grid-template: auto / repeat(2, 1fr);
-    width: min(calc(100% - 12px * 2), 1200px);
+    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
+  }
+
+  .refreshButton {
+    inset: 0 auto auto 0;
+    position: absolute;
+    z-index: 2;
+
+    @media (width < 980px) {
+      left: min(48px, 4.5dvw);
+    }
   }
 
   .imageContainer {
+    z-index: 1;
+
     @media (width < 980px) {
+      display: grid;
       height: 480px;
+      justify-content: center;
+      width: calc(100dvw - 24px);
     }
   }
 
   .imageWrapper {
+    max-height: 125dvh;
     position: relative;
     width: 100%;
-    z-index: 1;
 
     @media (width < 980px) {
       width: 480px;
@@ -58,7 +72,7 @@
 
     @media (width < 980px) {
       background: rgba(255, 255, 255, 0.95);
-      width: calc(100dvw - 48px);
+      width: calc(100% - min(48px, 4.5dvw) * 2);
       z-index: 1;
     }
   }
