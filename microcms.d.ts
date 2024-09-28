@@ -6,6 +6,7 @@ namespace MicroCMS {
   };
 
   type Document = {
+    about: string;
     faq: string;
     guidelines: string;
     movie: string;

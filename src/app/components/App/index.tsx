@@ -112,7 +112,7 @@ export type AppProps = {
 };
 
 export default function App({
-  documentObjectResponse: { movie },
+  documentObjectResponse: { about, movie },
   memberListResponse: { contents: memberListContents },
   newsListResponse: { contents: newsListContents },
 }: AppProps): JSX.Element {
@@ -222,13 +222,7 @@ export default function App({
               <div className={styles.diamond} />
             </div>
             <div className={styles.container}>
-              <p className={styles.description}>
-                『ラブボックス』は、リアルかわいいを追求した女性アイドルVTuberグループ及びそれを運営するプロダクションです。
-                <br />
-                ラブボックスという名前は、アイドルたちが同じ箱の元で愛を持って接し、支え合いながら夢を追いかけてほしいという想いに由来しています。
-                <br />
-                アイドルたちは、それぞれが理想のアイドル像をもっています。当プロダクションでは、理想のアイドルになるまでの物語を、ファンの皆様とともに見守り、支えていきたいと考えています。
-              </p>
+              <p className={styles.description}>{about}</p>
               <div className={styles.imageWrapper}>
                 <Image alt="about" fill={true} quality={100} src="/about.jpg" />
               </div>

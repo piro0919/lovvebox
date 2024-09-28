@@ -197,6 +197,7 @@
   .description {
     font-size: 1.8rem;
     line-height: 2;
+    white-space: pre-wrap;
 
     @media (width <= 980px) {
       padding: 48px min(48px, 4.5dvw);

@@ -14,7 +14,6 @@ import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const schema = z.object({
-  approval: z.literal<boolean>(true),
   attribute: z.string().min(1),
   companyName: z.string(),
   emailAddress: z.string().email(),
@@ -33,7 +32,6 @@ export default function Contact(): JSX.Element {
     register,
   } = useForm<FieldTypes>({
     defaultValues: {
-      approval: false,
       attribute: "individual",
       companyName: "",
       emailAddress: "",
@@ -46,6 +44,8 @@ export default function Contact(): JSX.Element {
     resolver: zodResolver(schema),
   });
   const { setTrue: onIsAgree, value: isAgree } = useBoolean(false);
+
+  console.log(errors);
 
   return (
     <motion.div
@@ -62,7 +62,7 @@ export default function Contact(): JSX.Element {
         <h1 className={`${goldman.className} ${styles.h1}`}>CONTACT</h1>
       </div>
       <div className={styles.container}>
-        <Form control={control}>
+        <Form action="/api/email" control={control}>
           <div className={styles.fieldWrapper}>
             <fieldset className={styles.fieldset}>
               <legend className={styles.legend}>
@@ -241,7 +241,7 @@ export default function Contact(): JSX.Element {
             </div>
           </div>
           <div className={styles.formFooter}>
-            <label {...register("approval")} className={styles.checkboxLabel}>
+            <label className={styles.checkboxLabel}>
               <input disabled={!isAgree} type="checkbox" />
               <span>
                 <Link
