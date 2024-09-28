@@ -19,6 +19,7 @@
 
   @media (width < 980px) {
     justify-items: center;
+    overflow: hidden;
   }
 
   @media (width >= 980px) {

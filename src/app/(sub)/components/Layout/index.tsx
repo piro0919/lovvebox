@@ -9,6 +9,7 @@ import Spacer from "react-spacer";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
+import menuList from "@/utils/menuList";
 
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
 
@@ -36,48 +37,20 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           </Link>
           <Spacer grow={1} />
           <ul className={styles.list}>
-            <li>
-              <Link
-                className={`${delaGothicOne.className} ${styles.link}`}
-                href="/news"
-              >
-                NEWS
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${delaGothicOne.className} ${styles.link}`}
-                href="/member"
-              >
-                MEMBER
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${delaGothicOne.className} ${styles.link}`}
-                href="/faq"
-              >
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${delaGothicOne.className} ${styles.link}`}
-                href="https://lovvebox.booth.pm/"
-                target="_blank"
-              >
-                <span>STORE</span>
-                <FaExternalLinkSquareAlt size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`${delaGothicOne.className} ${styles.link}`}
-                href="/contact"
-              >
-                CONTACT
-              </Link>
-            </li>
+            {menuList.map(({ href, text }) => (
+              <li key={href}>
+                <Link
+                  className={`${delaGothicOne.className} ${styles.link}`}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : "_self"}
+                >
+                  <span>{text}</span>
+                  {href.startsWith("http") ? (
+                    <FaExternalLinkSquareAlt size={18} />
+                  ) : null}
+                </Link>
+              </li>
+            ))}
           </ul>
           <div className={styles.hamburger}>
             <Hamburger toggle={toggle} toggled={toggled} />

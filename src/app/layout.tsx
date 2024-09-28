@@ -7,7 +7,6 @@ import "pattern.css/dist/pattern.css";
 import "react-modern-drawer/dist/index.css";
 import "ress";
 import "swiper/css";
-// import "swiper/css/navigation";
 import Layout from "./components/Layout";
 import "./globals.css";
 

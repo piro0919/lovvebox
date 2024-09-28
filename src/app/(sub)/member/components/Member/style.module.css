@@ -46,6 +46,7 @@
     display: grid;
     gap: 0 min(36px, 4.5dvw);
     grid-template: auto / repeat(auto-fill, minmax(315px, 1fr));
+    overflow: hidden;
     width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
   }
 

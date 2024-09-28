@@ -29,6 +29,7 @@ import { useBoolean } from "usehooks-ts";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
+import menuList from "@/utils/menuList";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
@@ -194,48 +195,20 @@ export default function App({
             </Link>
             <Spacer grow={1} />
             <ul className={styles.list}>
-              <li>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href="/news"
-                >
-                  NEWS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href="/member"
-                >
-                  MEMBER
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href="/faq"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href="https://lovvebox.booth.pm/"
-                  target="_blank"
-                >
-                  <span>STORE</span>
-                  <FaExternalLinkSquareAlt size={18} />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href="/contact"
-                >
-                  CONTACT
-                </Link>
-              </li>
+              {menuList.map(({ href, text }) => (
+                <li key={href}>
+                  <Link
+                    className={`${delaGothicOne.className} ${styles.link}`}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : "_self"}
+                  >
+                    <span>{text}</span>
+                    {href.startsWith("http") ? (
+                      <FaExternalLinkSquareAlt size={18} />
+                    ) : null}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <div className={styles.hamburger}>
               <Hamburger toggle={toggle} toggled={toggled} />
@@ -257,7 +230,7 @@ export default function App({
                 アイドルたちは、それぞれが理想のアイドル像をもっています。当プロダクションでは、理想のアイドルになるまでの物語を、ファンの皆様とともに見守り、支えていきたいと考えています。
               </p>
               <div className={styles.imageWrapper}>
-                <Image alt="about" fill={true} src="/about.jpg" />
+                <Image alt="about" fill={true} quality={100} src="/about.jpg" />
               </div>
             </div>
           </Article>
@@ -359,7 +332,7 @@ export default function App({
                             className={styles.image}
                             fill={true}
                             quality={100}
-                            src={`${url}?fit=clamp&w=1000`}
+                            src={`${url}?fit=clamp&w=400`}
                           />
                         </motion.div>
                         <div
