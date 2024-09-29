@@ -1,30 +1,27 @@
 .wrapper {
   display: grid;
   justify-items: center;
-  padding-bottom: 120px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 60px;
+  margin: 12px 12px 120px;
+  padding-top: clamp(24px, 4.5dvh, 60px);
 
-  @media (width < 980px) {
-    padding-top: 24px;
+  @media (width >= 980px) {
+    padding-left: min(48px, 4.5dvw);
+    padding-right: min(48px, 4.5dvw);
   }
 }
 
 .container {
   align-items: flex-start;
   display: grid;
-  padding-bottom: 12px;
   position: relative;
+  width: min(100%, 1200px);
 
   @media (width < 980px) {
     justify-items: center;
-    overflow: hidden;
   }
 
   @media (width >= 980px) {
     grid-template: auto / repeat(2, 1fr);
-    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
   }
 
   .refreshButton {
@@ -33,12 +30,15 @@
     z-index: 2;
 
     @media (width < 980px) {
-      left: min(48px, 4.5dvw);
+      margin-left: min(48px, 4.5dvw);
+      margin-right: min(48px, 4.5dvw);
     }
   }
 
   .imageContainer {
-    z-index: 1;
+    @media (width >= 980px) {
+      z-index: 1;
+    }
 
     @media (width < 980px) {
       display: grid;
@@ -67,14 +67,14 @@
   .detail {
     backdrop-filter: blur(1px);
     background: rgba(255, 255, 255, 0.95);
-    border: solid 9px rgba(238, 130, 169, 0.25);
     border-radius: 12px;
-    padding: 48px min(60px, 4.5dvw) 60px;
+    border-style: solid;
+    border-width: 9px;
+    padding: 48px min(60px, 4.5dvw);
 
     @media (width < 980px) {
-      background: rgba(255, 255, 255, 0.95);
-      width: calc(100% - min(48px, 4.5dvw) * 2);
-      z-index: 1;
+      margin-left: min(48px, 4.5dvw);
+      margin-right: min(48px, 4.5dvw);
     }
   }
 
@@ -84,26 +84,8 @@
 
   .name {
     color: #fff;
-    font-size: 5.4rem;
+    font-size: 4.8rem;
     font-weight: 500;
-    text-shadow:
-      2px 0 var(--color-theme-main),
-      -2px 0 var(--color-theme-main),
-      0 -2px var(--color-theme-main),
-      0 2px var(--color-theme-main),
-      2px 2px var(--color-theme-main),
-      -2px 2px var(--color-theme-main),
-      2px -2px var(--color-theme-main),
-      -2px -2px var(--color-theme-main),
-      1px 2px var(--color-theme-main),
-      -1px 2px var(--color-theme-main),
-      1px -2px var(--color-theme-main),
-      -1px -2px var(--color-theme-main),
-      2px 1px var(--color-theme-main),
-      -2px 1px var(--color-theme-main),
-      2px -1px var(--color-theme-main),
-      -2px -1px var(--color-theme-main),
-      6px 6px 0 rgba(238, 130, 169, 0.5);
   }
 
   .furigana {
@@ -112,34 +94,40 @@
   }
 
   .profile {
-    font-size: 1.65rem;
+    font-size: 1.8rem;
     line-height: 1.75;
-    padding-top: 36px;
+    padding-top: 30px;
     white-space: pre-wrap;
   }
 
   .dl {
     display: table;
-    padding-top: 30px;
+    padding-top: 15px;
     text-align: left;
     width: 100%;
   }
 
   .di {
-    border-bottom: 1px solid #ee82a9;
+    border: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
   }
 
   .dt {
+    border-width: 0;
     display: table-cell;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     padding: 15px;
     position: relative;
-    width: 120px;
+    width: 108px;
   }
 
   .dt::after {
-    background-color: #ee82a9;
+    border-color: inherit;
+    border-left-width: 1px;
+    border-right-width: 0;
+    border-style: solid;
     bottom: -8px;
     content: "";
     height: 15px;
@@ -152,7 +140,7 @@
     display: table-cell;
     font-size: 1.65rem;
     padding: 15px;
-    width: calc(100% - 120px);
+    width: calc(100% - 108px);
   }
 
   .socialIconsWrapper {

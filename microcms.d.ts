@@ -31,6 +31,7 @@ namespace MicroCMS {
 
   type News = {
     content: string;
+    pastPublishedAt?: Date;
     title: string;
   };
 

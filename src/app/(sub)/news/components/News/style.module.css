@@ -1,13 +1,13 @@
 .wrapper {
   display: grid;
   justify-items: center;
-  padding-bottom: 120px;
-  padding-left: 12px;
-  padding-right: 12px;
+  margin: 12px 12px 120px;
+  padding: 0 min(48px, 4.5dvw);
+}
 
-  @media (width <= 980px) {
-    padding-top: 12px;
-  }
+.h1Wrapper,
+.container {
+  width: min(100%, 1200px);
 }
 
 .h1Wrapper {
@@ -41,12 +41,10 @@
 }
 
 .container {
-  backdrop-filter: blur(1px);
-  background: rgba(255, 255, 255, 0.95);
-  border: solid 9px rgba(238, 130, 169, 0.25);
+  background: #fff;
+  border: solid 9px #fbe0e9;
   border-radius: 12px;
   padding: 48px min(48px, 4.5dvw);
-  width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
 }
 
 .list {
@@ -65,7 +63,8 @@
 
 .date {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
+  width: 108px;
 }
 
 .title {

@@ -5,6 +5,7 @@
     "@hookform/resolvers": "3.9.0",
     "@next/third-parties": "14.2.13",
     "@t3-oss/env-nextjs": "0.11.1",
+    "color": "4.2.3",
     "dayjs": "1.11.13",
     "eases": "1.0.8",
     "framer-motion": "11.9.0",
@@ -44,6 +45,7 @@
     "@commitlint/config-conventional": "19.2.2",
     "@piro0919/next-unused": "0.2.2",
     "@total-typescript/ts-reset": "0.5.1",
+    "@types/color": "3.0.6",
     "@types/eases": "1.0.4",
     "@types/node": "^20",
     "@types/nodemailer": "6.4.16",
@@ -80,6 +82,7 @@
     "stylelint-css-modules-no-global-scoped-selector": "1.0.2",
     "stylelint-declaration-block-no-ignored-properties": "2.8.0",
     "stylelint-high-performance-animation": "1.10.0",
+    "stylelint-no-unused-selectors": "1.0.40",
     "stylelint-order": "6.0.4",
     "typescript": "^5"
   },
@@ -90,6 +93,9 @@
     },
     "stylelint-css-modules-no-global-scoped-selector": {
       "stylelint": "16.8.2"
+    },
+    "stylelint-no-unused-selectors": {
+      "stylelint": "16.8.2"
     }
   },
   "private": true,
@@ -97,6 +103,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "lint:style": "stylelint --fix '**/*.css'",
     "start": "next start"
   },
   "version": "0.1.0"

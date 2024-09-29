@@ -37,16 +37,20 @@ export default function News({
       </div>
       <div className={styles.container}>
         <ul className={styles.list}>
-          {newsListContents.map(({ createdAt, id, publishedAt, title }) => (
-            <li key={title}>
-              <Link className={styles.link} href={`/news/${id}`}>
-                <div className={`${goldman.className} ${styles.date}`}>
-                  {dayjs(publishedAt ?? createdAt).format("YYYY.MM.DD")}
-                </div>
-                <div className={styles.title}>{title}</div>
-              </Link>
-            </li>
-          ))}
+          {newsListContents.map(
+            ({ createdAt, id, pastPublishedAt, publishedAt, title }) => (
+              <li key={title}>
+                <Link className={styles.link} href={`/news/${id}`}>
+                  <div className={`${goldman.className} ${styles.date}`}>
+                    {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
+                      "YYYY.MM.DD"
+                    )}
+                  </div>
+                  <div className={styles.title}>{title}</div>
+                </Link>
+              </li>
+            )
+          )}
         </ul>
       </div>
     </motion.div>

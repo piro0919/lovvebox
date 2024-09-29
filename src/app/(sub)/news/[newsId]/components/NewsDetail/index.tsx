@@ -1,12 +1,16 @@
 "use client";
+import dayjs from "dayjs";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-ts-sdk";
+import { Goldman } from "next/font/google";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import styles from "./style.module.css";
+
+const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
 export type NewsDetailProps = {
   newsListDetailResponse: MicroCMS.News &
@@ -17,7 +21,13 @@ export type NewsDetailProps = {
 };
 
 export default function NewsDetail({
-  newsListDetailResponse: { content, title },
+  newsListDetailResponse: {
+    content,
+    createdAt,
+    pastPublishedAt,
+    publishedAt,
+    title,
+  },
 }: NewsDetailProps): JSX.Element {
   return (
     <motion.div
@@ -31,7 +41,14 @@ export default function NewsDetail({
       }}
     >
       <div className={styles.h1Wrapper}>
-        <h1 className={styles.h1}>{title}</h1>
+        <div>
+          <div className={`${goldman.className} ${styles.date}`}>
+            {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
+              "YYYY.MM.DD"
+            )}
+          </div>
+          <h1 className={styles.h1}>{title}</h1>
+        </div>
       </div>
       <div className={styles.container}>
         <ReactMarkdown

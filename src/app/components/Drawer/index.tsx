@@ -3,6 +3,7 @@ import { Dela_Gothic_One as DelaGothicOne } from "next/font/google";
 import Link from "next/link";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import ReactModernDrawer from "react-modern-drawer";
+import { SocialIcon } from "react-social-icons";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
@@ -42,6 +43,22 @@ export default function Drawer(): JSX.Element {
             </Link>
           </li>
         ))}
+      </ul>
+      <ul className={styles.iconList}>
+        <li>
+          <SocialIcon
+            className={styles.socialIcon}
+            target="_blank"
+            url="https://www.youtube.com/@lovvebox"
+          />
+        </li>
+        <li>
+          <SocialIcon
+            className={styles.socialIcon}
+            target="_blank"
+            url="https://x.com/lovvebox"
+          />
+        </li>
       </ul>
     </ReactModernDrawer>
   );

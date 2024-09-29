@@ -51,21 +51,44 @@
   padding: 48px min(60px, 4.5dvw);
 }
 
-.reactMarkdown {
-  font-size: 1.8rem;
-  line-height: 1.75;
-
-  .ol {
-    list-style: decimal;
-    margin-left: 2.4rem;
-  }
-
-  .ul {
-    list-style: disc;
-    margin-left: 2.4rem;
-  }
+.fieldWrapper {
+  display: grid;
+  gap: 36px;
 }
 
-.reactMarkdown > * {
-  margin-bottom: 3rem;
+.label {
+  font-size: 1.8rem;
+}
+
+.value {
+  font-size: 1.8rem;
+  white-space: pre-wrap;
+}
+
+.formFooter {
+  display: grid;
+  font-size: 1.65rem;
+  gap: 36px;
+  justify-items: center;
+  padding: 48px 0 0;
+  text-align: center;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.button {
+  border: 2px solid var(--color-theme-main);
+  border-radius: 50dvmax;
+  color: var(--color-theme-main);
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 12px 48px;
+}
+
+.button[type="submit"] {
+  background: var(--color-theme-main);
+  color: #fff;
 }

@@ -11,7 +11,7 @@
   inset: 0 0 auto auto;
   position: absolute;
   width: 0;
-  z-index: 10;
+  z-index: 2;
 
   .iconWrapper {
     height: 120px;
@@ -84,9 +84,10 @@
     padding: 6px;
   }
 
-  .nav {
+  .inner {
     align-items: center;
     display: flex;
+    gap: 36px;
   }
 
   .list {
@@ -107,6 +108,20 @@
     text-shadow: 3px 3px var(--color-theme-main);
   }
 
+  .iconList {
+    display: flex;
+    gap: 12px;
+
+    @media (width <= 980px) {
+      display: none;
+    }
+  }
+
+  .socialIcon {
+    height: 42px !important;
+    width: 42px !important;
+  }
+
   .hamburger {
     @media (width > 980px) {
       display: none;
@@ -119,12 +134,13 @@
   gap: 45px;
   justify-items: center;
   margin: 60px 0 90px;
+  padding: 0 min(48px, 4.5dvw);
 
   .h2Wrapper {
     align-items: center;
     display: flex;
     gap: min(24px, 4.5dvw);
-    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
+    width: min(100%, 1200px);
   }
 
   .h2 {
@@ -171,37 +187,33 @@
     font-size: 2.1rem;
     gap: 6px;
   }
+
+  .container {
+    background: #fff;
+    border: solid 9px #fbe0e9;
+    border-radius: 12px;
+    width: min(100%, 1200px);
+  }
 }
 
 .article[data-article="about"] {
   /* stylelint-disable-next-line rule-empty-line-before */
   .container {
     align-items: center;
-    backdrop-filter: blur(1px);
-    background: rgba(255, 255, 255, 0.95);
-    border: solid 9px rgba(238, 130, 169, 0.25);
-    border-radius: 12px;
     display: flex;
-    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
 
     @media (width <= 980px) {
       flex-direction: column;
     }
-
-    @media (width > 980px) {
-      gap: min(48px, 4.5dvw);
-      padding: 0 0 0 min(48px, 4.5dvw);
-    }
   }
 
   .description {
+    display: flex;
+    flex: 1;
     font-size: 1.8rem;
-    line-height: 2;
+    justify-content: center;
+    padding: min(48px, 12dvmin);
     white-space: pre-wrap;
-
-    @media (width <= 980px) {
-      padding: 48px min(48px, 4.5dvw);
-    }
   }
 
   .imageWrapper {
@@ -209,11 +221,11 @@
     position: relative;
 
     @media (width <= 720px) {
-      width: min(480px, 100%);
+      width: min(420px, 100%);
     }
 
     @media (width > 720px) {
-      height: 480px;
+      height: 420px;
     }
   }
 }
@@ -221,12 +233,7 @@
 .article[data-article="news"] {
   /* stylelint-disable-next-line rule-empty-line-before */
   .container {
-    backdrop-filter: blur(1px);
-    background: rgba(255, 255, 255, 0.95);
-    border: solid 9px rgba(238, 130, 169, 0.25);
-    border-radius: 12px;
     padding: 48px min(48px, 4.5dvw);
-    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
   }
 
   .list {
@@ -245,7 +252,8 @@
 
   .date {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+    width: 108px;
   }
 
   .title {
@@ -254,7 +262,13 @@
 }
 
 .article[data-article="member"] {
-  /* stylelint-disable-next-line rule-empty-line-before */
+  padding: 0;
+
+  .h2Wrapper {
+    padding: 0 min(48px, 4.5dvw);
+    width: min(100%, calc(1200px + min(48px, 4.5dvw) * 2));
+  }
+
   .swiperWrapper {
     position: relative;
   }

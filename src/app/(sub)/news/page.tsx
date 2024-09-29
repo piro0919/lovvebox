@@ -15,6 +15,10 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "news",
+    queries: {
+      limit: 20,
+      orders: "-pastPublishedAt",
+    },
   });
 
   return <News newsListResponse={newsListResponse} />;

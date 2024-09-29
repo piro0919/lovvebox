@@ -1,5 +1,6 @@
 "use client";
 import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
+import Color from "color";
 import dayjs from "dayjs";
 import { backOut } from "eases";
 import { motion, useInView } from "framer-motion";
@@ -160,15 +161,9 @@ export default function App({
           </div>
           <div className={`${styles.pattern} pattern-cross-dots-md `}>
             <motion.div
-              animate={
-                ready
-                  ? {
-                      opacity: 0,
-                    }
-                  : {
-                      opacity: 1,
-                    }
-              }
+              animate={{
+                opacity: ready ? 0 : 1,
+              }}
               className={styles.logo}
               transition={{ delay: 3.5 }}
             >
@@ -183,7 +178,7 @@ export default function App({
           </div>
         </div>
         <aside className={styles.aside}>
-          <nav className={styles.nav}>
+          <div className={styles.inner}>
             <Link href="/">
               <Image
                 alt="ラブボックス"
@@ -194,26 +189,44 @@ export default function App({
               />
             </Link>
             <Spacer grow={1} />
-            <ul className={styles.list}>
-              {menuList.map(({ href, text }) => (
-                <li key={href}>
-                  <Link
-                    className={`${delaGothicOne.className} ${styles.link}`}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : "_self"}
-                  >
-                    <span>{text}</span>
-                    {href.startsWith("http") ? (
-                      <FaExternalLinkSquareAlt size={18} />
-                    ) : null}
-                  </Link>
-                </li>
-              ))}
+            <nav>
+              <ul className={styles.list}>
+                {menuList.map(({ href, text }) => (
+                  <li key={href}>
+                    <Link
+                      className={`${delaGothicOne.className} ${styles.link}`}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : "_self"}
+                    >
+                      <span>{text}</span>
+                      {href.startsWith("http") ? (
+                        <FaExternalLinkSquareAlt size={18} />
+                      ) : null}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <ul className={styles.iconList}>
+              <li>
+                <SocialIcon
+                  className={styles.socialIcon}
+                  target="_blank"
+                  url="https://www.youtube.com/@lovvebox"
+                />
+              </li>
+              <li>
+                <SocialIcon
+                  className={styles.socialIcon}
+                  target="_blank"
+                  url="https://x.com/lovvebox"
+                />
+              </li>
             </ul>
             <div className={styles.hamburger}>
               <Hamburger toggle={toggle} toggled={toggled} />
             </div>
-          </nav>
+          </div>
         </aside>
         <main>
           <Article article="about" ready={ready}>
@@ -243,11 +256,13 @@ export default function App({
             <div className={styles.container}>
               <ul className={styles.list}>
                 {newsListContents.map(
-                  ({ createdAt, id, publishedAt, title }) => (
+                  ({ createdAt, id, pastPublishedAt, publishedAt, title }) => (
                     <li key={title}>
                       <Link className={styles.link} href={`/news/${id}`}>
                         <div className={`${goldman.className} ${styles.date}`}>
-                          {dayjs(publishedAt ?? createdAt).format("YYYY.MM.DD")}
+                          {dayjs(
+                            pastPublishedAt ?? publishedAt ?? createdAt
+                          ).format("YYYY.MM.DD")}
                         </div>
                         <div className={styles.title}>{title}</div>
                       </Link>
@@ -332,7 +347,7 @@ export default function App({
                         <div
                           className={`${mPlus1.className} ${styles.name}`}
                           style={{
-                            textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
+                            textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
                           }}
                         >
                           {name}

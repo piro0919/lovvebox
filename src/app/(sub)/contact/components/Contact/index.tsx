@@ -5,32 +5,24 @@ import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { Goldman } from "next/font/google";
 import Link from "next/link";
-import { Form, useForm } from "react-hook-form";
+import { useRouter } from "next-nprogress-bar";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
 import { useBoolean } from "usehooks-ts";
-import validator from "validator";
-import { z } from "zod";
+import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
+import useContactStore, { Values, schema } from "@/stores/useContactStore";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
-const schema = z.object({
-  attribute: z.string().min(1),
-  companyName: z.string(),
-  emailAddress: z.string().email(),
-  inquiryDetails: z.string().min(1),
-  inquiryItem: z.string().min(1),
-  name: z.string().min(1),
-  telephoneNumber: z.string().refine(validator.isMobilePhone),
-});
-
-type FieldTypes = z.infer<typeof schema>;
 
 export default function Contact(): JSX.Element {
   const {
-    control,
     formState: { errors },
+    handleSubmit,
     register,
-  } = useForm<FieldTypes>({
+    reset,
+  } = useForm<Values>({
     defaultValues: {
       attribute: "individual",
       companyName: "",
@@ -40,12 +32,24 @@ export default function Contact(): JSX.Element {
       name: "",
       telephoneNumber: "",
     },
-    progressive: true,
     resolver: zodResolver(schema),
   });
   const { setTrue: onIsAgree, value: isAgree } = useBoolean(false);
+  const { setValues, values } = useContactStore(
+    useShallow((state) => ({
+      setValues: state.setValues,
+      values: state.values,
+    }))
+  );
+  const router = useRouter();
 
-  console.log(errors);
+  useEffect(() => {
+    if (!values) {
+      return;
+    }
+
+    reset(values);
+  }, [reset, values]);
 
   return (
     <motion.div
@@ -62,7 +66,13 @@ export default function Contact(): JSX.Element {
         <h1 className={`${goldman.className} ${styles.h1}`}>CONTACT</h1>
       </div>
       <div className={styles.container}>
-        <Form action="/api/email" control={control}>
+        <form
+          onSubmit={handleSubmit((values) => {
+            setValues(values);
+
+            router.push("/contact/confirm");
+          })}
+        >
           <div className={styles.fieldWrapper}>
             <fieldset className={styles.fieldset}>
               <legend className={styles.legend}>
@@ -255,11 +265,11 @@ export default function Contact(): JSX.Element {
                 に同意する。
               </span>
             </label>
-            <button className={styles.button} type="submit">
+            <button className={styles.button} disabled={!isAgree} type="submit">
               確認画面へ
             </button>
           </div>
-        </Form>
+        </form>
       </div>
     </motion.div>
   );

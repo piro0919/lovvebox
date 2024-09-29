@@ -1,4 +1,5 @@
 "use client";
+import Color from "color";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
@@ -69,7 +70,7 @@ export default function Member({
                   <div
                     className={`${mPlus1.className} ${styles.name}`}
                     style={{
-                      textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${color}`,
+                      textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
                     }}
                   >
                     {name}

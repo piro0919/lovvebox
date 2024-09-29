@@ -1,17 +1,19 @@
 .wrapper {
-  padding-bottom: 120px;
-  padding-left: 12px;
-  padding-right: 12px;
+  display: grid;
+  justify-items: center;
+  margin: 12px 12px 120px;
+  padding: 0 min(48px, 4.5dvw);
+}
 
-  @media (width <= 980px) {
-    padding-top: 12px;
-  }
+.h1Wrapper,
+.container {
+  width: min(100%, 1200px);
 }
 
 .h1Wrapper {
   display: flex;
   justify-content: center;
-  padding: 90px 0;
+  padding: 90px 0 60px;
 }
 
 .h1 {
@@ -39,15 +41,11 @@
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-
+  /* stylelint-disable-next-line rule-empty-line-before */
   .list {
     display: grid;
     gap: 0 min(36px, 4.5dvw);
     grid-template: auto / repeat(auto-fill, minmax(315px, 1fr));
-    overflow: hidden;
-    width: min(calc(100% - min(48px, 4.5dvw) * 2), 1200px);
   }
 
   .item {
@@ -62,6 +60,7 @@
   }
 
   .background {
+    background-repeat: repeat;
     border-radius: 12px;
     inset: calc(100% * 0.25) 0 0;
     opacity: 0.5;

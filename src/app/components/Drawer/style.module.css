@@ -2,6 +2,7 @@
   backdrop-filter: blur(1px) !important;
   background: rgba(255, 204, 224, 0.95) !important;
   height: auto !important;
+  padding: 72px 0;
 }
 
 .list {
@@ -11,7 +12,6 @@
   font-size: 1.8rem;
   font-weight: 700;
   gap: 36px;
-  padding: 72px 0;
 }
 
 .link {
@@ -20,4 +20,16 @@
   gap: 6px;
   letter-spacing: 0.1rem;
   text-shadow: 3px 3px var(--color-theme-main);
+}
+
+.iconList {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  padding-top: 48px;
+}
+
+.socialIcon {
+  height: 42px !important;
+  width: 42px !important;
 }

@@ -28,6 +28,10 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "news",
+    queries: {
+      limit: 3,
+      orders: "-pastPublishedAt",
+    },
   });
 
   return (
