@@ -30,7 +30,6 @@ body {
   background-color: #f5f5f5;
   background-size: 6rem 6rem;
   color: var(--color-theme-main);
-  overflow-x: hidden;
 }
 
 * {

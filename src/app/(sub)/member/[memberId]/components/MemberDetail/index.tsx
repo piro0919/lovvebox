@@ -91,7 +91,7 @@ export default function MemberDetail({
           className={styles.detail}
           initial={{ opacity: 0, y: 48 }}
           style={{
-            borderColor: color,
+            borderColor: Color(color).lighten(0.125).toString(),
             color,
           }}
           transition={{
