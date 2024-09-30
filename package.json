@@ -3,7 +3,6 @@
     "@custom-react-hooks/use-lock-body-scroll": "1.5.1",
     "@hookform/error-message": "2.0.1",
     "@hookform/resolvers": "3.9.0",
-    "@next/third-parties": "14.2.13",
     "@t3-oss/env-nextjs": "0.11.1",
     "@tsparticles/react": "3.0.0",
     "@tsparticles/slim": "3.5.0",
@@ -103,10 +102,17 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "depcheck": "depcheck",
     "dev": "next dev",
+    "find:unused": "next-unused",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "lint:style": "stylelint --fix '**/*.css'",
-    "start": "next start"
+    "postbuild": "next-sitemap",
+    "prepare": "husky",
+    "prettier": "prettier --write .",
+    "start": "next start",
+    "type-check": "tsc --noemit"
   },
   "version": "0.1.0"
 }
