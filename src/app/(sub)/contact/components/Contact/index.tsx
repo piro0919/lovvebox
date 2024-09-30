@@ -252,7 +252,11 @@ export default function Contact(): JSX.Element {
           </div>
           <div className={styles.formFooter}>
             <label className={styles.checkboxLabel}>
-              <input disabled={!isAgree} type="checkbox" />
+              <input
+                className={styles.checkbox}
+                disabled={!isAgree}
+                type="checkbox"
+              />
               <span>
                 <Link
                   className={styles.link}

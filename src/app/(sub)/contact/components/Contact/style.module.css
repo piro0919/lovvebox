@@ -81,6 +81,7 @@
 }
 
 .radioField {
+  align-items: center;
   display: flex;
   gap: 6px;
 }
@@ -108,8 +109,13 @@
 }
 
 .checkboxLabel {
+  align-items: center;
   display: flex;
   gap: 6px;
+}
+
+.checkbox:disabled {
+  opacity: 0.5;
 }
 
 .link {

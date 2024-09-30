@@ -53,7 +53,7 @@
 
 .fieldWrapper {
   display: grid;
-  gap: 36px;
+  gap: 24px;
 }
 
 .label {
@@ -76,7 +76,9 @@
 
 .buttonsWrapper {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap-reverse;
+  gap: 12px 24px;
+  justify-content: center;
 }
 
 .button {

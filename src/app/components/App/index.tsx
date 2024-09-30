@@ -310,51 +310,65 @@ export default function App({
                 spaceBetween={12}
               >
                 {memberListContents
-                  .map(({ color, id, images: [{ url }], name }, index) => (
-                    <SwiperSlide
-                      className={styles.swiperSlide}
-                      key={id}
-                      style={{ zIndex: index }}
-                    >
-                      <Link className={styles.link} href={`/member/${id}`}>
-                        <div
-                          className={styles.background}
-                          style={{ background: color }}
-                        />
-                        <motion.div
-                          animate={
-                            isInView && ready
-                              ? { opacity: 1, scale: 1 }
-                              : { opacity: 0, scale: 0.75 }
-                          }
-                          className={styles.imageWrapper}
-                          initial={{ opacity: 0, scale: 0.75 }}
-                          transition={{
-                            delay:
-                              0.5 + (memberListContents.length - index) * 0.1,
-                            duration: 0.5,
-                            ease: backOut,
-                          }}
-                        >
-                          <Image
-                            alt={name}
-                            className={styles.image}
-                            fill={true}
-                            quality={100}
-                            src={`${url}?fit=clamp&w=400`}
+                  .map(
+                    (
+                      { color, graduation, id, images: [{ url }], name },
+                      index
+                    ) => (
+                      <SwiperSlide
+                        className={styles.swiperSlide}
+                        key={id}
+                        style={{ zIndex: index }}
+                      >
+                        <Link className={styles.link} href={`/member/${id}`}>
+                          <div
+                            className={styles.background}
+                            style={{ background: color }}
                           />
-                        </motion.div>
-                        <div
-                          className={`${mPlus1.className} ${styles.name}`}
-                          style={{
-                            textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
-                          }}
-                        >
-                          {name}
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-                  ))
+                          {graduation ? (
+                            <Image
+                              alt=""
+                              className={styles.sakura}
+                              height={72}
+                              src="/sakura.png"
+                              width={72}
+                            />
+                          ) : null}
+                          <motion.div
+                            animate={
+                              isInView && ready
+                                ? { opacity: graduation ? 0.5 : 1, scale: 1 }
+                                : { opacity: 0, scale: 0.75 }
+                            }
+                            className={styles.imageWrapper}
+                            initial={{ opacity: 0, scale: 0.75 }}
+                            transition={{
+                              delay:
+                                0.5 + (memberListContents.length - index) * 0.1,
+                              duration: 0.5,
+                              ease: backOut,
+                            }}
+                          >
+                            <Image
+                              alt={name}
+                              className={styles.image}
+                              fill={true}
+                              quality={100}
+                              src={`${url}?fit=clamp&w=400`}
+                            />
+                          </motion.div>
+                          <div
+                            className={`${mPlus1.className} ${styles.name}`}
+                            style={{
+                              textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
+                            }}
+                          >
+                            {name}
+                          </div>
+                        </Link>
+                      </SwiperSlide>
+                    )
+                  )
                   .reverse()}
                 <SwiperButtonPrev />
                 <SwiperButtonNext />

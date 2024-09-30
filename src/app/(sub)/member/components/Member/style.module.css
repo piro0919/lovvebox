@@ -67,6 +67,12 @@
     position: absolute;
   }
 
+  .sakura {
+    inset: 25% auto auto 0;
+    position: absolute;
+    z-index: 1;
+  }
+
   .imageContainer {
     height: 100%;
     margin-left: -25%;

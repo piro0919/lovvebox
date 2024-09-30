@@ -1,0 +1,54 @@
+{
+  "background": {
+    "color": {
+      "value": "transparent"
+    }
+  },
+  "fullScreen": {
+    "enable": true,
+    "zIndex": -1
+  },
+  "interactivity": {
+    "events": {
+      "onClick": {
+        "enable": false
+      },
+      "onHover": {
+        "enable": false
+      }
+    }
+  },
+  "particles": {
+    "color": {
+      "value": "#fff"
+    },
+    "move": {
+      "direction": "bottom",
+      "enable": true,
+      "speed": 2
+    },
+    "number": {
+      "density": {
+        "enable": true
+      },
+      "value": 400
+    },
+    "opacity": {
+      "value": 1
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "size": {
+      "value": 10
+    },
+    "wobble": {
+      "distance": 10,
+      "enable": true,
+      "speed": {
+        "angle": 10,
+        "move": 10
+      }
+    }
+  }
+}

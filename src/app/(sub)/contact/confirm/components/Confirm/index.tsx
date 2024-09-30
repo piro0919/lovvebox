@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Goldman } from "next/font/google";
 import { useRouter } from "next-nprogress-bar";
 import { useEffect, useMemo } from "react";
-import { Form, useForm } from "react-hook-form";
+import { Form, useForm, useWatch } from "react-hook-form";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useContactStore, { Values, schema } from "@/stores/useContactStore";
@@ -32,9 +32,9 @@ export default function Confirm(): JSX.Element {
     }))
   );
   const router = useRouter();
+  const attribute = useWatch({ control, name: "attribute" });
+  const inquiryItem = useWatch({ control, name: "inquiryItem" });
   const attributeText = useMemo(() => {
-    const attribute = getValues("attribute");
-
     switch (attribute) {
       case "individual": {
         return "個人";
@@ -43,10 +43,8 @@ export default function Confirm(): JSX.Element {
         return "法人";
       }
     }
-  }, [getValues]);
+  }, [attribute]);
   const inquiryItemText = useMemo(() => {
-    const inquiryItem = getValues("inquiryItem");
-
     switch (inquiryItem) {
       case "consultation": {
         return "企業様案件のご相談に関して";
@@ -64,7 +62,7 @@ export default function Confirm(): JSX.Element {
         return "その他";
       }
     }
-  }, [getValues]);
+  }, [inquiryItem]);
 
   useEffect(() => {
     if (!values) {
