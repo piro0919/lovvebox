@@ -1,4 +1,6 @@
 // eslint-disable-next-line filenames/match-exported
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import type { Metadata } from "next";
@@ -31,6 +33,8 @@ export default function RootLayout({
     <html lang="ja">
       <body className={mPlus1.className}>
         <Layout>{children}</Layout>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -2,6 +2,6 @@
 module.exports = {
   changefreq: "daily",
   generateRobotsTxt: true,
-  siteUrl: "",
+  siteUrl: "https://lovvebox.com/",
   sitemapSize: 5000,
 };
