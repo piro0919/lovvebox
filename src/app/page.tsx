@@ -1,5 +1,15 @@
 import App from "@/app/components/App";
 import client from "@/utils/client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com",
+  },
+  openGraph: {
+    type: "website",
+  },
+};
 
 export default async function Page(): Promise<JSX.Element> {
   const documentObjectResponse = await client.getObject({

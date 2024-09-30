@@ -3,6 +3,9 @@ import Guidelines from "./components/Guidelines";
 import client from "@/utils/client";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com/guidelines",
+  },
   title: "GUIDELINES",
 };
 

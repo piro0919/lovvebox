@@ -17,7 +17,12 @@ dayjs.locale("ja");
 const mPlus1 = MPLUS1({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: "ラブボックス",
   description: "会いに行けるアイドルVTuberグループ",
+  robots: {
+    follow: true,
+    index: true,
+  },
   title: {
     default: "ラブボックス公式サイト",
     template: "%s - ラブボックス公式サイト",

@@ -3,6 +3,9 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import client from "@/utils/client";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com/privacy-policy",
+  },
   title: "PRIVACY POLICY",
 };
 

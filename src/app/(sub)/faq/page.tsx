@@ -3,6 +3,9 @@ import Faq from "./components/Faq";
 import client from "@/utils/client";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com/faq",
+  },
   title: "FAQ",
 };
 

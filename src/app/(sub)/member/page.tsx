@@ -3,6 +3,9 @@ import Member from "./components/Member";
 import client from "@/utils/client";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com/member",
+  },
   title: "MEMBER",
 };
 

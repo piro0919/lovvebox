@@ -3,6 +3,9 @@ import News from "@/app/(sub)/news/components/News";
 import client from "@/utils/client";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lovvebox.com/news",
+  },
   title: "NEWS",
 };
 

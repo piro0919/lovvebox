@@ -10,7 +10,7 @@ type PageProps = {
 export async function generateMetadata({
   params: { memberId },
 }: PageProps): Promise<Metadata> {
-  const { name } = await client.getListDetail({
+  const { name, profile } = await client.getListDetail({
     contentId: memberId,
     customRequestInit: {
       next: {
@@ -22,6 +22,10 @@ export async function generateMetadata({
   });
 
   return {
+    alternates: {
+      canonical: `https://lovvebox.com/member/${memberId}`,
+    },
+    description: profile,
     title: name,
   };
 }
