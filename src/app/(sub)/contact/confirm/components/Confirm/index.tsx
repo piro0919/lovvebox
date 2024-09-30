@@ -95,25 +95,25 @@ export default function Confirm(): JSX.Element {
           onSuccess={() => router.push("/contact/thank-you")}
         >
           <div className={styles.fieldWrapper}>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="attribute">
                 属性
               </label>
               <div className={styles.value}>{attributeText}</div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="companyName">
                 会社名
               </label>
               <div className={styles.value}>{watch("companyName") || "-"}</div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="name">
                 お名前
               </label>
               <div className={styles.value}>{watch("name")}</div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="telephoneNumber">
                 電話番号
               </label>
@@ -121,19 +121,19 @@ export default function Confirm(): JSX.Element {
                 {watch("telephoneNumber") || "-"}
               </div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="emailAddress">
                 メールアドレス
               </label>
               <div className={styles.value}>{watch("emailAddress")}</div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="inquiryItem">
                 お問い合わせ項目
               </label>
               <div className={styles.value}>{inquiryItemText}</div>
             </div>
-            <div className={styles.field}>
+            <div>
               <label className={styles.label} htmlFor="inquiryDetails">
                 お問い合わせ内容
               </label>

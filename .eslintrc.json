@@ -4,7 +4,6 @@
     "google",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:css-modules/recommended",
     "plugin:typescript-sort-keys/recommended",
     "next/core-web-vitals",
     "prettier"
@@ -22,9 +21,9 @@
     "warnOnUnsupportedTypeScriptVersion": false
   },
   "plugins": [
-    "css-modules",
     "ext",
     "filenames",
+    "postcss-modules",
     "sort-destructure-keys",
     "sort-keys-fix",
     "typescript-sort-keys",
@@ -34,18 +33,6 @@
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "css-modules/no-undef-class": [
-      2,
-      {
-        "camelCase": true
-      }
-    ],
-    "css-modules/no-unused-class": [
-      2,
-      {
-        "camelCase": true
-      }
-    ],
     "ext/lines-between-object-properties": [
       "error",
       "never"
@@ -150,6 +137,8 @@
         "prev": "let"
       }
     ],
+    "postcss-modules/no-undef-class": "error",
+    "postcss-modules/no-unused-class": "error",
     "quotes": [
       "error",
       "double"
@@ -195,5 +184,10 @@
         "varsIgnorePattern": "^_"
       }
     ]
+  },
+  "settings": {
+    "postcss-modules": {
+      "include": "**/*.module.css"
+    }
   }
 }
