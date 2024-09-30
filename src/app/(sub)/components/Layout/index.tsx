@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
@@ -25,7 +26,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   return (
     <div>
       <header className={styles.header}>
-        <nav className={styles.nav}>
+        <div className={styles.inner}>
           <Link href="/">
             <Image
               alt="ラブボックス"
@@ -36,28 +37,46 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
             />
           </Link>
           <Spacer grow={1} />
-          <ul className={styles.list}>
-            {menuList.map(({ href, text }) => (
-              <li key={href}>
-                <Link
-                  className={`${delaGothicOne.className} ${styles.link}`}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : "_self"}
-                >
-                  <span>{text}</span>
-                  {href.startsWith("http") ? (
-                    <FaExternalLinkSquareAlt size={18} />
-                  ) : null}
-                </Link>
-              </li>
-            ))}
+          <nav>
+            <ul className={styles.list}>
+              {menuList.map(({ href, text }) => (
+                <li key={href}>
+                  <Link
+                    className={`${delaGothicOne.className} ${styles.link}`}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : "_self"}
+                  >
+                    <span>{text}</span>
+                    {href.startsWith("http") ? (
+                      <FaExternalLinkSquareAlt size={18} />
+                    ) : null}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ul className={styles.iconList}>
+            <li>
+              <SocialIcon
+                className={styles.socialIcon}
+                target="_blank"
+                url="https://www.youtube.com/@lovvebox"
+              />
+            </li>
+            <li>
+              <SocialIcon
+                className={styles.socialIcon}
+                target="_blank"
+                url="https://x.com/lovvebox"
+              />
+            </li>
           </ul>
           <div className={styles.hamburger}>
             <Hamburger toggle={toggle} toggled={toggled} />
           </div>
-        </nav>
+        </div>
       </header>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }

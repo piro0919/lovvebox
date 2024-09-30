@@ -53,7 +53,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       break;
     }
     case "recruitment": {
-      inquiryItemText = "スタッフ採用に関して(FAQをご確認下さい)";
+      inquiryItemText = "スタッフ採用に関して";
 
       break;
     }
@@ -71,7 +71,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   await transporter.sendMail({
     from: emailAddress,
-    subject: "メール送信確認テスト",
+    replyTo: emailAddress,
+    subject: `【ラブボックス公式サイト】${inquiryItemText}`,
     text: `属性：${attributeText}
 会社名：${companyName || "-"}
 お名前：${name}

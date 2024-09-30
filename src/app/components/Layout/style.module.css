@@ -2,7 +2,6 @@
   display: grid;
   grid-template: 1fr auto / auto;
   min-height: 100dvh;
-  overflow-x: hidden;
 }
 
 .wrapper::before,

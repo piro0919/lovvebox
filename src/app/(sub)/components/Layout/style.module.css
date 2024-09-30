@@ -12,9 +12,10 @@
     padding: 6px;
   }
 
-  .nav {
+  .inner {
     align-items: center;
     display: flex;
+    gap: 36px;
   }
 
   .list {
@@ -35,9 +36,27 @@
     text-shadow: 3px 3px var(--color-theme-main);
   }
 
+  .iconList {
+    display: flex;
+    gap: 12px;
+
+    @media (width <= 980px) {
+      display: none;
+    }
+  }
+
+  .socialIcon {
+    height: 42px !important;
+    width: 42px !important;
+  }
+
   .hamburger {
     @media (width > 980px) {
       display: none;
     }
   }
+}
+
+.main {
+  overflow-x: hidden;
 }

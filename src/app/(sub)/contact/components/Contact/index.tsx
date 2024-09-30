@@ -203,7 +203,11 @@ export default function Contact(): JSX.Element {
                     value="recruitment"
                   />
                   <label className={styles.label} htmlFor="recruitment">
-                    スタッフ採用に関して(FAQをご確認下さい)
+                    スタッフ採用に関して(
+                    <Link className={styles.link} href="/faq" target="_blank">
+                      FAQ
+                    </Link>
+                    をご確認下さい)
                   </label>
                 </div>
                 <div className={styles.radioField}>

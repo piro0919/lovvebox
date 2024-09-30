@@ -53,7 +53,7 @@ export default function Confirm(): JSX.Element {
         return "オーディションに関して";
       }
       case "recruitment": {
-        return "スタッフ採用に関して(FAQをご確認下さい)";
+        return "スタッフ採用に関して";
       }
       case "sale": {
         return "グッズ販売に関して";
