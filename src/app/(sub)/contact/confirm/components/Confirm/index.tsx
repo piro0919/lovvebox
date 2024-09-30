@@ -13,7 +13,7 @@ import useContactStore, { Values, schema } from "@/stores/useContactStore";
 const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
 
 export default function Confirm(): JSX.Element {
-  const { control, getValues, register, reset, watch } = useForm<Values>({
+  const { control, register, reset, watch } = useForm<Values>({
     defaultValues: {
       attribute: "individual",
       companyName: "",
