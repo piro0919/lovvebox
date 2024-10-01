@@ -2,7 +2,7 @@
   display: grid;
   justify-items: center;
   margin: 12px 12px 120px;
-  padding-top: clamp(24px, 4.5dvh, 60px);
+  padding-top: clamp(24px, 4.5svh, 60px);
 
   @media (width >= 980px) {
     padding-left: min(48px, 4.5dvw);
