@@ -5,6 +5,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:css-modules/recommended",
+    "plugin:no-unsanitized/recommended-legacy",
     "plugin:typescript-sort-keys/recommended",
     "next/core-web-vitals",
     "prettier"
@@ -28,7 +29,8 @@
     "sort-destructure-keys",
     "sort-keys-fix",
     "typescript-sort-keys",
-    "unused-imports"
+    "unused-imports",
+    "write-good-comments"
   ],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "error",
@@ -182,6 +184,7 @@
         "vars": "all",
         "varsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "write-good-comments/write-good-comments": "error"
   }
 }
