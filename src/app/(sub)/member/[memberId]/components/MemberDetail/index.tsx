@@ -162,22 +162,30 @@ export default function MemberDetail({
           </dl>
           <div className={styles.socialIconsWrapper}>
             <SocialIcon
+              bgColor={color}
               className={styles.socialIcon}
+              fgColor="#fff"
               target="_blank"
               url={`https://www.youtube.com/${youtubeId}`}
             />
             <SocialIcon
+              bgColor={color}
               className={styles.socialIcon}
+              fgColor="#fff"
               target="_blank"
               url={`https://x.com/${twitterId}`}
             />
             <SocialIcon
+              bgColor={color}
               className={styles.socialIcon}
+              fgColor="#fff"
               target="_blank"
               url={`https://www.instagram.com/${instagramId}`}
             />
             <SocialIcon
+              bgColor={color}
               className={styles.socialIcon}
+              fgColor="#fff"
               target="_blank"
               url={`https://www.tiktok.com/${tiktokId}`}
             />

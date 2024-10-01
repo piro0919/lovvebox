@@ -210,14 +210,18 @@ export default function App({
             <ul className={styles.iconList}>
               <li>
                 <SocialIcon
+                  bgColor="#f89eac"
                   className={styles.socialIcon}
+                  fgColor="#fff"
                   target="_blank"
                   url="https://www.youtube.com/@lovvebox"
                 />
               </li>
               <li>
                 <SocialIcon
+                  bgColor="#f89eac"
                   className={styles.socialIcon}
+                  fgColor="#fff"
                   target="_blank"
                   url="https://x.com/lovvebox"
                 />
