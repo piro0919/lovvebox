@@ -17,6 +17,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useRef } from "react";
+import { AspectRatio } from "react-aspect-ratio";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   IoMdArrowDropleftCircle,
