@@ -246,9 +246,6 @@ export default function App({
             </div>
             <div className={styles.container}>
               <p className={styles.description}>{about}</p>
-              <div className={styles.imageWrapper}>
-                <Image alt="about" fill={true} quality={100} src="/about.jpg" />
-              </div>
             </div>
           </Article>
           <Article article="news" ready={ready}>
