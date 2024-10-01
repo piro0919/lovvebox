@@ -44,7 +44,7 @@ export default function NewsDetail({
         <div>
           <div className={`${goldman.className} ${styles.date}`}>
             {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
-              "YYYY.MM.DD"
+              "YYYY.MM.DD",
             )}
           </div>
           <h1 className={styles.h1}>{title}</h1>

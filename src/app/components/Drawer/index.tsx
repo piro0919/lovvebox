@@ -20,7 +20,7 @@ export default function Drawer(): JSX.Element {
     useShallow((state) => ({
       setIsOpen: state.setIsOpen,
       toggled: state.toggled,
-    }))
+    })),
   );
 
   useLockBodyScroll(toggled);

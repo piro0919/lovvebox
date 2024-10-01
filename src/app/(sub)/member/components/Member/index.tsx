@@ -100,7 +100,7 @@ export default function Member({
                     </div>
                   </Link>
                 </li>
-              )
+              ),
             )
             .reverse()}
         </ul>

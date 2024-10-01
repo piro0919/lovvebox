@@ -33,7 +33,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   const { setIsOpen } = useDrawerStore(
     useShallow((state) => ({
       setIsOpen: state.setIsOpen,
-    }))
+    })),
   );
   const pathname = usePathname();
   const { setTrue: onInit, value: init } = useBoolean(false);

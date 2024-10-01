@@ -13,7 +13,7 @@ export default function ThankYou(): JSX.Element {
   const { clearValues } = useContactStore(
     useShallow((state) => ({
       clearValues: state.clearValues,
-    }))
+    })),
   );
 
   useEffect(() => {

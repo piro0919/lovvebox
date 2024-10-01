@@ -16,7 +16,7 @@ import {
 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useMemo, useRef } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   IoMdArrowDropleftCircle,
@@ -128,6 +128,10 @@ export default function App({
   const { setTrue: onReady, value: ready } = useBoolean(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const urlList = useMemo(
+    () => shuffle(movie.split(/\n/).filter((v) => v)),
+    [movie],
+  );
 
   useLockBodyScroll(!ready);
 
@@ -159,7 +163,7 @@ export default function App({
               muted={true}
               onReady={() => onReady()}
               playing={ready}
-              url={shuffle(movie.split(/\n/).filter((v) => v))}
+              url={urlList}
               width="100%"
             />
           </div>

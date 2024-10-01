@@ -39,7 +39,7 @@ export default function Contact(): JSX.Element {
     useShallow((state) => ({
       setValues: state.setValues,
       values: state.values,
-    }))
+    })),
   );
   const router = useRouter();
 

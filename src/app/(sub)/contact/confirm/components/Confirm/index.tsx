@@ -29,7 +29,7 @@ export default function Confirm(): JSX.Element {
   const { values } = useContactStore(
     useShallow((state) => ({
       values: state.values,
-    }))
+    })),
   );
   const router = useRouter();
   const attribute = useWatch({ control, name: "attribute" });

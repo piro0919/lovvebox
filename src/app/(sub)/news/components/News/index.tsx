@@ -53,13 +53,13 @@ export default function News({
                 <Link className={styles.link} href={`/news/${id}`}>
                   <div className={`${goldman.className} ${styles.date}`}>
                     {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
-                      "YYYY.MM.DD"
+                      "YYYY.MM.DD",
                     )}
                   </div>
                   <div className={styles.title}>{title}</div>
                 </Link>
               </li>
-            )
+            ),
           )}
         </ul>
       </motion.div>

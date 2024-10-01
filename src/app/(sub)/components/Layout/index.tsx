@@ -21,7 +21,7 @@ export type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { toggle, toggled } = useDrawerStore(
-    useShallow((state) => ({ toggle: state.toggle, toggled: state.toggled }))
+    useShallow((state) => ({ toggle: state.toggle, toggled: state.toggled })),
   );
 
   return (
