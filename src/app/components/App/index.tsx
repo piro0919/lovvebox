@@ -12,6 +12,7 @@ import {
   Dela_Gothic_One as DelaGothicOne,
   Goldman,
   M_PLUS_1 as MPLUS1,
+  Racing_Sans_One as RacingSansOne,
 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,9 +35,10 @@ import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
 import menuList from "@/utils/menuList";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
+const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 function Article({
@@ -237,7 +239,9 @@ export default function App({
         <main>
           <Article article="about" ready={ready}>
             <div className={styles.h2Wrapper}>
-              <h2 className={`${goldman.className} ${styles.h2}`}>ABOUT</h2>
+              <h2 className={`${racingSansOne.className} ${styles.h2}`}>
+                ABOUT
+              </h2>
               <div className={styles.diamond} />
             </div>
             <div className={styles.container}>
@@ -249,7 +253,9 @@ export default function App({
           </Article>
           <Article article="news" ready={ready}>
             <div className={styles.h2Wrapper}>
-              <h2 className={`${goldman.className} ${styles.h2}`}>NEWS</h2>
+              <h2 className={`${racingSansOne.className} ${styles.h2}`}>
+                NEWS
+              </h2>
               <div className={styles.diamond} />
               <Link
                 className={`${goldman.className} ${styles.more}`}
@@ -280,7 +286,9 @@ export default function App({
           </Article>
           <Article article="member" ready={ready}>
             <div className={styles.h2Wrapper}>
-              <h2 className={`${goldman.className} ${styles.h2}`}>MEMBER</h2>
+              <h2 className={`${racingSansOne.className} ${styles.h2}`}>
+                MEMBER
+              </h2>
               <div className={styles.diamond} />
               <Link
                 className={`${goldman.className} ${styles.more}`}

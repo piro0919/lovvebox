@@ -100,13 +100,13 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                   value: 100,
                 },
                 opacity: {
-                  value: 1,
+                  value: { max: 0.75, min: 0 },
                 },
                 shape: {
                   type: "circle",
                 },
                 size: {
-                  value: 2.5,
+                  value: { max: 25, min: 0 },
                 },
                 wobble: {
                   distance: 5,

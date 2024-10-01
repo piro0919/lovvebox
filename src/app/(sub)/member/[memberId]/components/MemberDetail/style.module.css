@@ -24,7 +24,7 @@
     grid-template: auto / repeat(2, 1fr);
   }
 
-  .refreshButton {
+  .refreshButtonWrapper {
     inset: 0 auto auto 0;
     position: absolute;
     z-index: 2;
@@ -60,7 +60,6 @@
   }
 
   .image {
-    filter: drop-shadow(12px 12px rgba(0, 0, 0, 0.5));
     object-fit: contain;
     object-position: center top;
   }

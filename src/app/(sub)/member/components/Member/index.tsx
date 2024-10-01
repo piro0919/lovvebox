@@ -3,12 +3,15 @@ import Color from "color";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
-import { Goldman, M_PLUS_1 as MPLUS1 } from "next/font/google";
+import {
+  M_PLUS_1 as MPLUS1,
+  Racing_Sans_One as RacingSansOne,
+} from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.css";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
 
 export type MemberProps = {
@@ -35,7 +38,7 @@ export default function Member({
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>MEMBER</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>MEMBER</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

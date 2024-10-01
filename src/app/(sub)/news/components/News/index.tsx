@@ -3,11 +3,12 @@ import dayjs from "dayjs";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
-import { Goldman } from "next/font/google";
+import { Goldman, Racing_Sans_One as RacingSansOne } from "next/font/google";
 import Link from "next/link";
 import styles from "./style.module.css";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
+const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export type NewsProps = {
   newsListResponse: MicroCMSGetListResponse<
@@ -33,7 +34,7 @@ export default function News({
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>NEWS</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>NEWS</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

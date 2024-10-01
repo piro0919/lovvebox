@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
-import { Goldman } from "next/font/google";
+import { Racing_Sans_One as RacingSansOne } from "next/font/google";
 import { useRouter } from "next-nprogress-bar";
 import { useEffect, useMemo } from "react";
 import { Form, useForm, useWatch } from "react-hook-form";
@@ -10,7 +10,7 @@ import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useContactStore, { Values, schema } from "@/stores/useContactStore";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export default function Confirm(): JSX.Element {
   const { control, register, reset, watch } = useForm<Values>({
@@ -86,7 +86,7 @@ export default function Confirm(): JSX.Element {
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>CONFIRM</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>CONFIRM</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

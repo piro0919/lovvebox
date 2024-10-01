@@ -38,6 +38,10 @@
     2px -1px var(--color-theme-main),
     -2px -1px var(--color-theme-main),
     6px 6px 0 rgba(238, 130, 169, 0.5);
+
+  @media (width <= 980px) {
+    font-size: 4.5rem;
+  }
 }
 
 .container {

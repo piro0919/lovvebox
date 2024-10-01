@@ -1,7 +1,7 @@
 "use client";
 import Color from "color";
 import dayjs from "dayjs";
-import { backOut } from "eases";
+import { backOut, quartOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-ts-sdk";
 import { Zen_Maru_Gothic as ZenMaruGothic } from "next/font/google";
@@ -49,17 +49,31 @@ export default function MemberDetail({
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <motion.button
-          animate={{ rotate: count * 360 }}
-          className={styles.refreshButton}
-          onClick={() => increment()}
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          className={styles.refreshButtonWrapper}
+          initial={{ opacity: 0, y: 48 }}
+          style={{
+            borderColor: Color(color).lighten(0.125).toString(),
+            color,
+          }}
           transition={{
-            duration: 1,
+            delay: 0.6,
+            duration: 0.5,
             ease: backOut,
           }}
         >
-          <IoMdRefreshCircle color={color} size={48} />
-        </motion.button>
+          <motion.button
+            animate={{ rotate: count * 360 }}
+            onClick={() => increment()}
+            transition={{
+              duration: 1,
+              ease: backOut,
+            }}
+          >
+            <IoMdRefreshCircle color={color} size={48} />
+          </motion.button>
+        </motion.div>
         <motion.div
           animate={{ opacity: 1, y: 0 }}
           className={styles.imageContainer}
@@ -71,10 +85,21 @@ export default function MemberDetail({
             ease: backOut,
           }}
         >
-          <div
+          <motion.div
+            animate={{
+              filter: "drop-shadow(12px 12px rgba(0, 0, 0, 0.5))",
+            }}
             className={styles.imageWrapper}
+            initial={{
+              filter: "drop-shadow(0 0 rgba(0, 0, 0, 0))",
+            }}
             style={{
               aspectRatio: `${width}/${imageHeight}`,
+            }}
+            transition={{
+              delay: 0.5,
+              duration: 0.5,
+              ease: quartOut,
             }}
           >
             <Image
@@ -84,7 +109,7 @@ export default function MemberDetail({
               quality={100}
               src={`${url}?fit=clamp&w=1000`}
             />
-          </div>
+          </motion.div>
         </motion.div>
         <motion.div
           animate={{ opacity: 1, y: 0 }}

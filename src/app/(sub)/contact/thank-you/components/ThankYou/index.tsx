@@ -1,13 +1,13 @@
 "use client";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
-import { Goldman } from "next/font/google";
+import { Racing_Sans_One as RacingSansOne } from "next/font/google";
 import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useContactStore from "@/stores/useContactStore";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export default function ThankYou(): JSX.Element {
   const { clearValues } = useContactStore(
@@ -32,7 +32,7 @@ export default function ThankYou(): JSX.Element {
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>THANK YOU</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>THANK YOU</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

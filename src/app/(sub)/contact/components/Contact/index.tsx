@@ -3,7 +3,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
-import { Goldman } from "next/font/google";
+import { Racing_Sans_One as RacingSansOne } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from "next-nprogress-bar";
 import { useEffect } from "react";
@@ -14,7 +14,7 @@ import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useContactStore, { Values, schema } from "@/stores/useContactStore";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export default function Contact(): JSX.Element {
   const {
@@ -63,7 +63,7 @@ export default function Contact(): JSX.Element {
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>CONTACT</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>CONTACT</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

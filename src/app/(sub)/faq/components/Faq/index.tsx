@@ -2,14 +2,14 @@
 import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSDate } from "microcms-ts-sdk";
-import { Goldman } from "next/font/google";
+import { Racing_Sans_One as RacingSansOne } from "next/font/google";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import styles from "./style.module.css";
 
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
+const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export type FaqProps = {
   documentObjectResponse: MicroCMS.Document &
@@ -33,7 +33,7 @@ export default function Faq({
           ease: backOut,
         }}
       >
-        <h1 className={`${goldman.className} ${styles.h1}`}>FAQ</h1>
+        <h1 className={`${racingSansOne.className} ${styles.h1}`}>FAQ</h1>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}
