@@ -4,9 +4,10 @@ import { Dela_Gothic_One as DelaGothicOne } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
+import validUrl from "valid-url";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
@@ -44,11 +45,11 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                   <Link
                     className={`${delaGothicOne.className} ${styles.link}`}
                     href={href}
-                    target={href.startsWith("http") ? "_blank" : "_self"}
+                    target={validUrl.isWebUri(href) ? "_blank" : "_self"}
                   >
                     <span>{text}</span>
-                    {href.startsWith("http") ? (
-                      <FaExternalLinkSquareAlt size={18} />
+                    {validUrl.isWebUri(href) ? (
+                      <FaExternalLinkAlt size={18} />
                     ) : null}
                   </Link>
                 </li>

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import styles from "./style.module.css";
 
 export default function Footer(): JSX.Element {
@@ -25,7 +25,7 @@ export default function Footer(): JSX.Element {
             target="_blank"
           >
             <span>会社概要</span>
-            <FaExternalLinkSquareAlt size={18} />
+            <FaExternalLinkAlt size={18} />
           </Link>
         </li>
         <li>

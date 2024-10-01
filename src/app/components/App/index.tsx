@@ -3,6 +3,7 @@ import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
 import Color from "color";
 import dayjs from "dayjs";
 import { backOut } from "eases";
+import { shuffle } from "fast-shuffle";
 import { motion, useInView } from "framer-motion";
 import Hamburger from "hamburger-react";
 import { MicroCMSDate, MicroCMSGetListResponse } from "microcms-ts-sdk";
@@ -15,7 +16,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useRef } from "react";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   IoMdArrowDropleftCircle,
   IoMdArrowDroprightCircle,
@@ -27,6 +28,7 @@ import useMeasure from "react-use-measure";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { useBoolean } from "usehooks-ts";
+import validUrl from "valid-url";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
@@ -155,7 +157,7 @@ export default function App({
               muted={true}
               onReady={() => onReady()}
               playing={ready}
-              url={movie.split(/\n/).filter((v) => v)}
+              url={shuffle(movie.split(/\n/).filter((v) => v))}
               width="100%"
             />
           </div>
@@ -196,11 +198,11 @@ export default function App({
                     <Link
                       className={`${delaGothicOne.className} ${styles.link}`}
                       href={href}
-                      target={href.startsWith("http") ? "_blank" : "_self"}
+                      target={validUrl.isWebUri(href) ? "_blank" : "_self"}
                     >
                       <span>{text}</span>
-                      {href.startsWith("http") ? (
-                        <FaExternalLinkSquareAlt size={18} />
+                      {validUrl.isWebUri(href) ? (
+                        <FaExternalLinkAlt size={18} />
                       ) : null}
                     </Link>
                   </li>

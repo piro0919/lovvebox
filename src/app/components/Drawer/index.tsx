@@ -1,15 +1,19 @@
 import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
+import dynamic from "next/dynamic";
 import { Dela_Gothic_One as DelaGothicOne } from "next/font/google";
 import Link from "next/link";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
-import ReactModernDrawer from "react-modern-drawer";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { SocialIcon } from "react-social-icons";
+import validUrl from "valid-url";
 import { useShallow } from "zustand/shallow";
 import styles from "./style.module.css";
 import useDrawerStore from "@/stores/useDrawerStore";
 import menuList from "@/utils/menuList";
 
 const delaGothicOne = DelaGothicOne({ subsets: ["latin"], weight: "400" });
+const ReactModernDrawer = dynamic(() => import("react-modern-drawer"), {
+  ssr: false,
+});
 
 export default function Drawer(): JSX.Element {
   const { setIsOpen, toggled } = useDrawerStore(
@@ -34,12 +38,10 @@ export default function Drawer(): JSX.Element {
             <Link
               className={`${delaGothicOne.className} ${styles.link}`}
               href={href}
-              target={href.startsWith("http") ? "_blank" : "_self"}
+              target={validUrl.isWebUri(href) ? "_blank" : "_self"}
             >
               <span>{text}</span>
-              {href.startsWith("http") ? (
-                <FaExternalLinkSquareAlt size={18} />
-              ) : null}
+              {validUrl.isWebUri(href) ? <FaExternalLinkAlt size={18} /> : null}
             </Link>
           </li>
         ))}
