@@ -17,7 +17,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useRef } from "react";
-import { AspectRatio } from "react-aspect-ratio";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   IoMdArrowDropleftCircle,
@@ -124,7 +123,7 @@ export default function App({
 }: AppProps): JSX.Element {
   const [measureRef, { height, width }] = useMeasure();
   const { toggle, toggled } = useDrawerStore(
-    useShallow((state) => ({ toggle: state.toggle, toggled: state.toggled }))
+    useShallow((state) => ({ toggle: state.toggle, toggled: state.toggled })),
   );
   const { setTrue: onReady, value: ready } = useBoolean(false);
   const ref = useRef(null);
@@ -271,13 +270,13 @@ export default function App({
                       <Link className={styles.link} href={`/news/${id}`}>
                         <div className={`${goldman.className} ${styles.date}`}>
                           {dayjs(
-                            pastPublishedAt ?? publishedAt ?? createdAt
+                            pastPublishedAt ?? publishedAt ?? createdAt,
                           ).format("YYYY.MM.DD")}
                         </div>
                         <div className={styles.title}>{title}</div>
                       </Link>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
             </div>
@@ -325,7 +324,7 @@ export default function App({
                   .map(
                     (
                       { color, graduation, id, images: [{ url }], name },
-                      index
+                      index,
                     ) => (
                       <SwiperSlide
                         className={styles.swiperSlide}
@@ -379,7 +378,7 @@ export default function App({
                           </div>
                         </Link>
                       </SwiperSlide>
-                    )
+                    ),
                   )
                   .reverse()}
                 <SwiperButtonPrev />
