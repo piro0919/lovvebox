@@ -354,7 +354,7 @@ export default function App({
                               className={styles.image}
                               fill={true}
                               quality={100}
-                              src={`${url}?fit=clamp&w=400`}
+                              src={`${url}?fit=clamp&w=600`}
                             />
                           </motion.div>
                           <div
