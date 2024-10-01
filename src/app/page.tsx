@@ -1,6 +1,6 @@
+import { Metadata } from "next";
 import App from "@/app/components/App";
 import client from "@/utils/client";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {

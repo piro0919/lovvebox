@@ -30,17 +30,17 @@ export default function NewsDetail({
   },
 }: NewsDetailProps): JSX.Element {
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      className={styles.wrapper}
-      initial={{ opacity: 0, y: 48 }}
-      transition={{
-        delay: 0.5,
-        duration: 0.5,
-        ease: backOut,
-      }}
-    >
-      <div className={styles.h1Wrapper}>
+    <div className={styles.wrapper}>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.h1Wrapper}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.5,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <div>
           <div className={`${goldman.className} ${styles.date}`}>
             {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
@@ -49,8 +49,17 @@ export default function NewsDetail({
           </div>
           <h1 className={styles.h1}>{title}</h1>
         </div>
-      </div>
-      <div className={styles.container}>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.container}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.6,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <ReactMarkdown
           className={styles.reactMarkdown}
           components={{
@@ -62,7 +71,7 @@ export default function NewsDetail({
         >
           {content}
         </ReactMarkdown>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

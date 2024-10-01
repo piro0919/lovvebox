@@ -1,6 +1,6 @@
+import { Metadata } from "next";
 import { ReactNode } from "react";
 import LayoutComponent from "@/app/(sub)/components/Layout";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   openGraph: {

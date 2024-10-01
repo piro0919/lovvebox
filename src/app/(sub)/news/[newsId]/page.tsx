@@ -1,7 +1,7 @@
+import { convert } from "html-to-text";
 import { Metadata } from "next";
 import NewsDetail from "./components/NewsDetail";
 import client from "@/utils/client";
-import { convert } from "html-to-text";
 
 type PageProps = {
   params: { newsId: string };

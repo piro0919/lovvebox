@@ -21,26 +21,35 @@ export default function ThankYou(): JSX.Element {
   }, [clearValues]);
 
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      className={styles.wrapper}
-      initial={{ opacity: 0, y: 48 }}
-      transition={{
-        delay: 0.5,
-        duration: 0.5,
-        ease: backOut,
-      }}
-    >
-      <div className={styles.h1Wrapper}>
+    <div className={styles.wrapper}>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.h1Wrapper}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.5,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <h1 className={`${goldman.className} ${styles.h1}`}>THANK YOU</h1>
-      </div>
-      <div className={styles.container}>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.container}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.6,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <p className={styles.description}>
-          お問い合わせありがとうございます。
+          ありがとうございます。
           <br />
           お問い合わせを受け付けました。
         </p>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

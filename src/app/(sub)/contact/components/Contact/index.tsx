@@ -52,20 +52,29 @@ export default function Contact(): JSX.Element {
   }, [reset, values]);
 
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      className={styles.wrapper}
-      initial={{ opacity: 0, y: 48 }}
-      transition={{
-        delay: 0.5,
-        duration: 0.5,
-        ease: backOut,
-      }}
-    >
-      <div className={styles.h1Wrapper}>
+    <div className={styles.wrapper}>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.h1Wrapper}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.5,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <h1 className={`${goldman.className} ${styles.h1}`}>CONTACT</h1>
-      </div>
-      <div className={styles.container}>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.container}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.6,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <form
           onSubmit={handleSubmit((values) => {
             setValues(values);
@@ -278,7 +287,7 @@ export default function Contact(): JSX.Element {
             </button>
           </div>
         </form>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

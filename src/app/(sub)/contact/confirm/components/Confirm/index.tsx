@@ -75,20 +75,29 @@ export default function Confirm(): JSX.Element {
   }, [reset, router, values]);
 
   return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      className={styles.wrapper}
-      initial={{ opacity: 0, y: 48 }}
-      transition={{
-        delay: 0.5,
-        duration: 0.5,
-        ease: backOut,
-      }}
-    >
-      <div className={styles.h1Wrapper}>
+    <div className={styles.wrapper}>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.h1Wrapper}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.5,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <h1 className={`${goldman.className} ${styles.h1}`}>CONFIRM</h1>
-      </div>
-      <div className={styles.container}>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className={styles.container}
+        initial={{ opacity: 0, y: 48 }}
+        transition={{
+          delay: 0.6,
+          duration: 0.5,
+          ease: backOut,
+        }}
+      >
         <Form
           action="/api/email"
           control={control}
@@ -165,7 +174,7 @@ export default function Confirm(): JSX.Element {
           <input {...register("name")} type="hidden" />
           <input {...register("telephoneNumber")} type="hidden" />
         </Form>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
