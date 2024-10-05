@@ -17,14 +17,13 @@ namespace MicroCMS {
     birthday: Date;
     color: string;
     debut: Date;
+    fanboxId?: string;
     furigana: string;
     graduation?: Date;
     height: number;
     images: Image[];
-    instagramId: string;
     name: string;
     profile: string;
-    tiktokId: string;
     twitterId: string;
     youtubeId: string;
   };

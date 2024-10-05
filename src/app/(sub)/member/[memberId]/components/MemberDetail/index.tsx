@@ -27,14 +27,13 @@ export default function MemberDetail({
     birthday,
     color,
     debut,
+    fanboxId,
     furigana,
     graduation,
     height,
     images,
-    instagramId,
     name,
     profile,
-    tiktokId,
     twitterId,
     youtubeId,
   },
@@ -200,20 +199,15 @@ export default function MemberDetail({
               target="_blank"
               url={`https://x.com/${twitterId}`}
             />
-            <SocialIcon
-              bgColor={color}
-              className={styles.socialIcon}
-              fgColor="#fff"
-              target="_blank"
-              url={`https://www.instagram.com/${instagramId}`}
-            />
-            <SocialIcon
-              bgColor={color}
-              className={styles.socialIcon}
-              fgColor="#fff"
-              target="_blank"
-              url={`https://www.tiktok.com/${tiktokId}`}
-            />
+            {fanboxId ? (
+              <SocialIcon
+                bgColor={color}
+                className={styles.socialIcon}
+                fgColor="#fff"
+                target="_blank"
+                url={`https://${fanboxId}-lvv.fanbox.cc`}
+              />
+            ) : null}
           </div>
         </motion.div>
       </div>
