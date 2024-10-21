@@ -13,6 +13,8 @@ namespace MicroCMS {
     privacypolicy: string;
   };
 
+  type Group = "らびぱれ!!" | "卒業生";
+
   type Member = {
     birthday: Date;
     color: string;
@@ -20,6 +22,7 @@ namespace MicroCMS {
     fanboxId?: string;
     furigana: string;
     graduation?: Date;
+    group: Group[];
     height: number;
     images: Image[];
     name: string;
@@ -31,6 +34,7 @@ namespace MicroCMS {
   type News = {
     content: string;
     pastPublishedAt?: Date;
+    thumbnail?: Image;
     title: string;
   };
 

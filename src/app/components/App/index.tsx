@@ -3,7 +3,6 @@ import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
 import Color from "color";
 import dayjs from "dayjs";
 import { backOut } from "eases";
-// import { shuffle } from "fast-shuffle";
 import { motion, useInView } from "framer-motion";
 import Hamburger from "hamburger-react";
 import { MicroCMSDate, MicroCMSGetListResponse } from "microcms-ts-sdk";
@@ -117,8 +116,7 @@ export type AppProps = {
 };
 
 export default function App({
-  // documentObjectResponse: { about, movie },
-  documentObjectResponse: { about },
+  documentObjectResponse: { about, movie },
   memberListResponse: { contents: memberListContents },
   newsListResponse: { contents: newsListContents },
 }: AppProps): JSX.Element {
@@ -129,10 +127,6 @@ export default function App({
   const { setTrue: onReady, value: ready } = useBoolean(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  // const urlList = useMemo(
-  //   () => shuffle(movie.split(/\n/).filter((v) => v)),
-  //   [movie]
-  // );
 
   useLockBodyScroll(!ready);
 
@@ -164,10 +158,7 @@ export default function App({
               muted={true}
               onReady={() => onReady()}
               playing={ready}
-              // url={urlList}
-              // url="/top.mp4"
-              // url="https://uc500229c78d93c8d6b22127591a.dl.dropboxusercontent.com/cd/0/inline/Cc3nK8V-4_qASJmhLDzTIae4nTJXY2G9No9-ism5emi0bnvIJ-M3GELsYKBUjXUPWp9yjIJwjaCOS0FZhORj8DsF7mtKFhD-Sa-_G8G9Sq-LaiBwplSOX0_wVviZkUFXapA/file#"
-              url="https://www.dropbox.com/scl/fi/ltqq4zt50g94csc7424hz/HP.mp4?rlkey=y6b53nzm45xxjzu8s6yjv10pz&st=xtcagkgt&dl=0"
+              url={movie}
               width="100%"
             />
           </div>
