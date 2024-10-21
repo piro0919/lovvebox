@@ -201,14 +201,14 @@
   .container {
     background-blend-mode: lighten;
     background-color: rgba(255, 255, 255, 0.75);
-    background-image: url("/background.jpg");
-    background-position: center center;
+    background-image: url("/background.png");
+    background-position: center 15%;
     background-size: cover;
     padding: min(120px, 24svmin) min(48px, 12svmin);
 
     @media (width <= 980px) {
       align-items: center;
-      background-image: url("/about.jpg");
+      background-image: url("/about.png");
       display: flex;
       justify-content: center;
     }
