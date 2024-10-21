@@ -98,7 +98,7 @@
   "name": "lovvebox",
   "overrides": {
     "eslint-plugin-typescript-sort-keys": {
-      "@typescript-eslint/parser": "8.2.0"
+      "@typescript-eslint/parser": "8.11.0"
     },
     "stylelint-css-modules-no-global-scoped-selector": {
       "stylelint": "16.8.2"
