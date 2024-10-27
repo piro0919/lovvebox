@@ -18,6 +18,9 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "document",
+    queries: {
+      fields: ["privacypolicy"],
+    },
   });
 
   return <PrivacyPolicy documentObjectResponse={documentObjectResponse} />;

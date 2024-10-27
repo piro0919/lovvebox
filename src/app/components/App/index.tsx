@@ -96,23 +96,45 @@ function SwiperButtonNext(): JSX.Element {
   );
 }
 
+type MemberListResponse = MicroCMSGetListResponse<
+  MicroCMS.Endpoints,
+  {
+    endpoint: "member";
+  }
+>;
+
+type NewsListResponse = MicroCMSGetListResponse<
+  MicroCMS.Endpoints,
+  {
+    endpoint: "news";
+  }
+>;
+
 export type AppProps = {
-  documentObjectResponse: MicroCMS.Document &
-    MicroCMSDate & {
-      [key: string]: unknown;
-    };
-  memberListResponse: MicroCMSGetListResponse<
-    MicroCMS.Endpoints,
-    {
-      endpoint: "member";
-    }
+  documentObjectResponse: Pick<
+    MicroCMS.Document &
+      MicroCMSDate & {
+        [key: string]: unknown;
+      },
+    "about" | "movie"
   >;
-  newsListResponse: MicroCMSGetListResponse<
-    MicroCMS.Endpoints,
-    {
-      endpoint: "news";
-    }
-  >;
+  memberListResponse: Omit<MemberListResponse, "contents"> & {
+    contents: Pick<
+      MemberListResponse["contents"][number],
+      "color" | "graduation" | "id" | "images" | "name"
+    >[];
+  };
+  newsListResponse: Omit<NewsListResponse, "contents"> & {
+    contents: Pick<
+      NewsListResponse["contents"][number],
+      | "createdAt"
+      | "id"
+      | "pastPublishedAt"
+      | "publishedAt"
+      | "thumbnail"
+      | "title"
+    >[];
+  };
 };
 
 export default function App({

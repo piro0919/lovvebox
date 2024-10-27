@@ -16,13 +16,20 @@ import styles from "./style.module.css";
 const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 const mPlus1 = MPLUS1({ subsets: ["latin"], weight: "800" });
 
+type MemberListResponse = MicroCMSGetListResponse<
+  MicroCMS.Endpoints,
+  {
+    endpoint: "member";
+  }
+>;
+
 export type MemberProps = {
-  memberListResponse: MicroCMSGetListResponse<
-    MicroCMS.Endpoints,
-    {
-      endpoint: "member";
-    }
-  >;
+  memberListResponse: Omit<MemberListResponse, "contents"> & {
+    contents: Pick<
+      MemberListResponse["contents"][number],
+      "color" | "graduation" | "id" | "images" | "name"
+    >[];
+  };
 };
 
 export default function Member({

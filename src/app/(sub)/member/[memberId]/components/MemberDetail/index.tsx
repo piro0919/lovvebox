@@ -17,11 +17,26 @@ import styles from "./style.module.css";
 const zenMaruGothic = ZenMaruGothic({ subsets: ["latin"], weight: "500" });
 
 export type MemberDetailProps = {
-  memberListDetailResponse: MicroCMS.Member &
-    MicroCMSContentId &
-    MicroCMSDate & {
-      [key: string]: unknown;
-    };
+  memberListDetailResponse: Pick<
+    MicroCMS.Member &
+      MicroCMSContentId &
+      MicroCMSDate & {
+        [key: string]: unknown;
+      },
+    | "birthday"
+    | "color"
+    | "debut"
+    | "fanboxId"
+    | "furigana"
+    | "graduation"
+    | "height"
+    | "images"
+    | "name"
+    | "profile"
+    | "twitterId"
+    | "voice"
+    | "youtubeId"
+  >;
 };
 
 export default function MemberDetail({

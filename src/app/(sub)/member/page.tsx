@@ -18,6 +18,9 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "member",
+    queries: {
+      fields: ["color", "graduation", "id", "images", "name"],
+    },
   });
 
   return <Member memberListResponse={memberListResponse} />;

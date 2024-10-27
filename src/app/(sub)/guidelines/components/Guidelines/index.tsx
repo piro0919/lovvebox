@@ -12,10 +12,13 @@ import styles from "./style.module.css";
 const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
 export type GuidelinesProps = {
-  documentObjectResponse: MicroCMS.Document &
-    MicroCMSDate & {
-      [key: string]: unknown;
-    };
+  documentObjectResponse: Pick<
+    MicroCMS.Document &
+      MicroCMSDate & {
+        [key: string]: unknown;
+      },
+    "guidelines"
+  >;
 };
 
 export default function Guidelines({

@@ -19,6 +19,9 @@ export async function generateMetadata({
       },
     },
     endpoint: "member",
+    queries: {
+      fields: ["name", "profile"],
+    },
   });
 
   return {
@@ -42,6 +45,23 @@ export default async function Page({
       },
     },
     endpoint: "member",
+    queries: {
+      fields: [
+        "birthday",
+        "color",
+        "debut",
+        "fanboxId",
+        "furigana",
+        "graduation",
+        "height",
+        "images",
+        "name",
+        "profile",
+        "twitterId",
+        "voice",
+        "youtubeId",
+      ],
+    },
   });
 
   return <MemberDetail memberListDetailResponse={memberListDetailResponse} />;

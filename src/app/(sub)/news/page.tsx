@@ -19,6 +19,14 @@ export default async function Page(): Promise<JSX.Element> {
     },
     endpoint: "news",
     queries: {
+      fields: [
+        "createdAt",
+        "id",
+        "pastPublishedAt",
+        "publishedAt",
+        "thumbnail",
+        "title",
+      ],
       limit: 20,
       orders: "-pastPublishedAt",
     },

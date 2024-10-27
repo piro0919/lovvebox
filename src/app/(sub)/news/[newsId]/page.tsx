@@ -20,6 +20,9 @@ export async function generateMetadata({
       },
     },
     endpoint: "news",
+    queries: {
+      fields: ["content", "title"],
+    },
   });
 
   return {

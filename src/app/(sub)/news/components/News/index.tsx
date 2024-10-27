@@ -11,13 +11,25 @@ import styles from "./style.module.css";
 const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
 const racingSansOne = RacingSansOne({ subsets: ["latin"], weight: "400" });
 
+type NewsListResponse = MicroCMSGetListResponse<
+  MicroCMS.Endpoints,
+  {
+    endpoint: "news";
+  }
+>;
+
 export type NewsProps = {
-  newsListResponse: MicroCMSGetListResponse<
-    MicroCMS.Endpoints,
-    {
-      endpoint: "news";
-    }
-  >;
+  newsListResponse: Omit<NewsListResponse, "contents"> & {
+    contents: Pick<
+      NewsListResponse["contents"][number],
+      | "createdAt"
+      | "id"
+      | "pastPublishedAt"
+      | "publishedAt"
+      | "thumbnail"
+      | "title"
+    >[];
+  };
 };
 
 export default function News({

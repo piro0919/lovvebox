@@ -20,6 +20,9 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "document",
+    queries: {
+      fields: ["about", "movie"],
+    },
   });
   const memberListResponse = await client.getList({
     customRequestInit: {
@@ -29,6 +32,9 @@ export default async function Page(): Promise<JSX.Element> {
       },
     },
     endpoint: "member",
+    queries: {
+      fields: ["color", "graduation", "id", "images", "name"],
+    },
   });
   const newsListResponse = await client.getList({
     customRequestInit: {
@@ -39,6 +45,14 @@ export default async function Page(): Promise<JSX.Element> {
     },
     endpoint: "news",
     queries: {
+      fields: [
+        "createdAt",
+        "id",
+        "pastPublishedAt",
+        "publishedAt",
+        "thumbnail",
+        "title",
+      ],
       limit: 3,
       orders: "-pastPublishedAt",
     },
