@@ -25,6 +25,22 @@ void i18next.init({
 
 z.setErrorMap(zodI18nMap);
 
+type PageBorderProps = {
+  children: ReactNode;
+};
+
+function PageBorder({ children }: PageBorderProps): JSX.Element {
+  return (
+    <div className={styles.borderWrapper}>
+      <div className={styles.borderInner}>{children}</div>
+      <div className={`${styles.corner} ${styles.cornerTopLeft}`} />
+      <div className={`${styles.corner} ${styles.cornerTopRight}`} />
+      <div className={`${styles.corner} ${styles.cornerBottomRight}`} />
+      <div className={`${styles.corner} ${styles.cornerBottomLeft}`} />
+    </div>
+  );
+}
+
 export type LayoutProps = {
   children: ReactNode;
 };
@@ -61,7 +77,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       <Drawer />
-      <div className={styles.wrapper}>
+      <PageBorder>
         {init ? (
           <Particles
             options={{
@@ -122,7 +138,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         ) : null}
         <div>{children}</div>
         <Footer />
-      </div>
+      </PageBorder>
       <ProgressBar color="#fff" height="3px" />
     </>
   );
