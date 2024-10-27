@@ -4,6 +4,7 @@ import { backOut } from "eases";
 import { motion } from "framer-motion";
 import { MicroCMSGetListResponse } from "microcms-ts-sdk";
 import { Goldman, Racing_Sans_One as RacingSansOne } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.css";
 
@@ -48,9 +49,24 @@ export default function News({
       >
         <ul className={styles.list}>
           {newsListContents.map(
-            ({ createdAt, id, pastPublishedAt, publishedAt, title }) => (
-              <li key={title}>
+            ({
+              createdAt,
+              id,
+              pastPublishedAt,
+              publishedAt,
+              thumbnail,
+              title,
+            }) => (
+              <li className={styles.item} key={title}>
                 <Link className={styles.link} href={`/news/${id}`}>
+                  <div className={styles.thumbnail}>
+                    <Image
+                      alt={title}
+                      fill={true}
+                      quality={100}
+                      src={thumbnail ? thumbnail.url : "/background.png"}
+                    />
+                  </div>
                   <div className={`${goldman.className} ${styles.date}`}>
                     {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
                       "YYYY.MM.DD",

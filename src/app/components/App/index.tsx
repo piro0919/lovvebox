@@ -264,9 +264,24 @@ export default function App({
             <div className={styles.container}>
               <ul className={styles.list}>
                 {newsListContents.map(
-                  ({ createdAt, id, pastPublishedAt, publishedAt, title }) => (
-                    <li key={title}>
+                  ({
+                    createdAt,
+                    id,
+                    pastPublishedAt,
+                    publishedAt,
+                    thumbnail,
+                    title,
+                  }) => (
+                    <li className={styles.item} key={title}>
                       <Link className={styles.link} href={`/news/${id}`}>
+                        <div className={styles.thumbnail}>
+                          <Image
+                            alt={title}
+                            fill={true}
+                            quality={100}
+                            src={thumbnail ? thumbnail.url : "/background.png"}
+                          />
+                        </div>
                         <div className={`${goldman.className} ${styles.date}`}>
                           {dayjs(
                             pastPublishedAt ?? publishedAt ?? createdAt,
@@ -401,7 +416,6 @@ export default function App({
               }
         }
         className={styles.loadingWrapper}
-        transition={{ delay: 0.5 }}
       >
         <Hearts color="#fff" height="90" visible={true} width="90" />
       </motion.div>

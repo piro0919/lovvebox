@@ -82,8 +82,9 @@
 
 .radioField {
   align-items: center;
-  display: flex;
+  display: grid;
   gap: 6px;
+  grid-template: auto / auto 1fr;
 }
 
 .input,

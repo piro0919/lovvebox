@@ -39,96 +39,108 @@ export default function MemberDetail({
   },
 }: MemberDetailProps): JSX.Element {
   const { count, increment } = useCounter(0);
+  const { count: loadedCount, increment: loadedIncrement } = useCounter(0);
   const {
     height: imageHeight,
     url,
     width,
   } = useMemo(() => images[count % images.length], [count, images]);
+  const loaded = useMemo(
+    () => loadedCount >= images.length,
+    [images.length, loadedCount],
+  );
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <motion.div
-          animate={{ opacity: 1, y: 0 }}
-          className={styles.refreshButtonWrapper}
-          initial={{ opacity: 0, y: 48 }}
-          style={{
-            borderColor: Color(color).lighten(0.125).toString(),
-            color,
-          }}
-          transition={{
-            delay: 0.6,
-            duration: 0.5,
-            ease: backOut,
-          }}
-        >
-          <motion.button
-            animate={{ rotate: count * 360 }}
-            onClick={() => increment()}
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <motion.div
+            animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
+            className={styles.refreshButtonWrapper}
+            initial={{ opacity: 0, y: 48 }}
+            style={{
+              borderColor: Color(color).lighten(0.125).toString(),
+              color,
+            }}
             transition={{
-              duration: 1,
+              delay: 0.6,
+              duration: 0.5,
               ease: backOut,
             }}
           >
-            <IoMdRefreshCircle color={color} size={48} />
-          </motion.button>
-        </motion.div>
-        <motion.div
-          animate={{ opacity: 1, y: 0 }}
-          className={styles.imageContainer}
-          initial={{ opacity: 0, y: 48 }}
-          key={count}
-          transition={{
-            delay: 0.5,
-            duration: 0.5,
-            ease: backOut,
-          }}
-        >
+            <motion.button
+              animate={{ rotate: count * 360 }}
+              onClick={() => increment()}
+              transition={{
+                duration: 1,
+                ease: backOut,
+              }}
+            >
+              <IoMdRefreshCircle color={color} size={48} />
+            </motion.button>
+          </motion.div>
           <motion.div
-            animate={{
-              filter: "drop-shadow(12px 12px rgba(0, 0, 0, 0.5))",
-            }}
-            className={styles.imageWrapper}
-            initial={{
-              filter: "drop-shadow(0 0 rgba(0, 0, 0, 0))",
-            }}
-            style={{
-              aspectRatio: `${width}/${imageHeight}`,
-            }}
+            animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
+            className={styles.imageContainer}
+            initial={{ opacity: 0, y: 48 }}
+            key={count}
             transition={{
               delay: 0.5,
               duration: 0.5,
-              ease: quartOut,
+              ease: backOut,
             }}
           >
-            <Image
-              alt={name}
-              className={styles.image}
-              fill={true}
-              quality={100}
-              src={`${url}?fit=clamp&w=1000`}
-            />
-          </motion.div>
-        </motion.div>
-        <motion.div
-          animate={{ opacity: 1, y: 0 }}
-          className={styles.detail}
-          initial={{ opacity: 0, y: 48 }}
-          style={{
-            borderColor: Color(color).lighten(0.125).toString(),
-            color,
-          }}
-          transition={{
-            delay: 0.6,
-            duration: 0.5,
-            ease: backOut,
-          }}
-        >
-          <div className={styles.nameWrapper}>
-            <h1
-              className={`${zenMaruGothic.className} ${styles.name}`}
+            <motion.div
+              animate={
+                loaded
+                  ? {
+                      filter: "drop-shadow(12px 12px rgba(0, 0, 0, 0.5))",
+                    }
+                  : {
+                      filter: "drop-shadow(0 0 rgba(0, 0, 0, 0))",
+                    }
+              }
+              className={styles.imageWrapper}
+              initial={{
+                filter: "drop-shadow(0 0 rgba(0, 0, 0, 0))",
+              }}
               style={{
-                textShadow: `2px 0 ${color},
+                aspectRatio: `${width}/${imageHeight}`,
+              }}
+              transition={{
+                delay: 0.5,
+                duration: 0.5,
+                ease: quartOut,
+              }}
+            >
+              <Image
+                alt={name}
+                className={styles.image}
+                fill={true}
+                quality={100}
+                src={`${url}?fit=clamp&w=1000`}
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div
+            animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
+            className={styles.detail}
+            initial={{ opacity: 0, y: 48 }}
+            style={{
+              borderColor: Color(color).lighten(0.125).toString(),
+              color,
+            }}
+            transition={{
+              delay: 0.6,
+              duration: 0.5,
+              ease: backOut,
+            }}
+          >
+            <div className={styles.nameWrapper}>
+              <h1
+                className={`${zenMaruGothic.className} ${styles.name}`}
+                style={{
+                  textShadow: `2px 0 ${color},
                   -2px 0 ${color},
                   0 -2px ${color},
                   0 2px ${color},
@@ -145,72 +157,89 @@ export default function MemberDetail({
                   2px -1px ${color},
                   -2px -1px ${color},
                   6px 6px 0 ${Color(color).alpha(0.5).toString()}`,
-              }}
-            >
-              {name}
-            </h1>
-            <div className={styles.furigana}>{furigana}</div>
-          </div>
-          <p className={styles.profile}>{profile}</p>
-          <dl className={styles.dl}>
-            <div className={styles.di} style={{ borderColor: color }}>
-              <dt className={styles.dt} style={{ borderColor: color }}>
-                誕生日
-              </dt>
-              <dd className={styles.dd}>{dayjs(birthday).format("M月D日")}</dd>
+                }}
+              >
+                {name}
+              </h1>
+              <div className={styles.furigana}>{furigana}</div>
             </div>
-            <div className={styles.di} style={{ borderColor: color }}>
-              <dt className={styles.dt} style={{ borderColor: color }}>
-                初配信日
-              </dt>
-              <dd className={styles.dd}>
-                {dayjs(debut).format("YYYY年M月D日")}
-              </dd>
-            </div>
-            <div className={styles.di} style={{ borderColor: color }}>
-              <dt className={styles.dt} style={{ borderColor: color }}>
-                身長
-              </dt>
-              <dd className={styles.dd}>{`${height}㎝`}</dd>
-            </div>
-            {graduation ? (
+            <p className={styles.profile}>{profile}</p>
+            <dl className={styles.dl}>
               <div className={styles.di} style={{ borderColor: color }}>
                 <dt className={styles.dt} style={{ borderColor: color }}>
-                  卒業日
+                  誕生日
                 </dt>
                 <dd className={styles.dd}>
-                  {dayjs(graduation).format("YYYY年M月D日")}
+                  {dayjs(birthday).format("M月D日")}
                 </dd>
               </div>
-            ) : null}
-          </dl>
-          <div className={styles.socialIconsWrapper}>
-            <SocialIcon
-              bgColor={color}
-              className={styles.socialIcon}
-              fgColor="#fff"
-              target="_blank"
-              url={`https://www.youtube.com/${youtubeId}`}
-            />
-            <SocialIcon
-              bgColor={color}
-              className={styles.socialIcon}
-              fgColor="#fff"
-              target="_blank"
-              url={`https://x.com/${twitterId}`}
-            />
-            {fanboxId ? (
+              <div className={styles.di} style={{ borderColor: color }}>
+                <dt className={styles.dt} style={{ borderColor: color }}>
+                  初配信日
+                </dt>
+                <dd className={styles.dd}>
+                  {dayjs(debut).format("YYYY年M月D日")}
+                </dd>
+              </div>
+              <div className={styles.di} style={{ borderColor: color }}>
+                <dt className={styles.dt} style={{ borderColor: color }}>
+                  身長
+                </dt>
+                <dd className={styles.dd}>{`${height}㎝`}</dd>
+              </div>
+              {graduation ? (
+                <div className={styles.di} style={{ borderColor: color }}>
+                  <dt className={styles.dt} style={{ borderColor: color }}>
+                    卒業日
+                  </dt>
+                  <dd className={styles.dd}>
+                    {dayjs(graduation).format("YYYY年M月D日")}
+                  </dd>
+                </div>
+              ) : null}
+            </dl>
+            <div className={styles.socialIconsWrapper}>
               <SocialIcon
                 bgColor={color}
                 className={styles.socialIcon}
                 fgColor="#fff"
                 target="_blank"
-                url={`https://${fanboxId}-lvv.fanbox.cc`}
+                url={`https://www.youtube.com/${youtubeId}`}
               />
-            ) : null}
-          </div>
-        </motion.div>
+              <SocialIcon
+                bgColor={color}
+                className={styles.socialIcon}
+                fgColor="#fff"
+                target="_blank"
+                url={`https://x.com/${twitterId}`}
+              />
+              {fanboxId ? (
+                <SocialIcon
+                  bgColor={color}
+                  className={styles.socialIcon}
+                  fgColor="#fff"
+                  target="_blank"
+                  url={`https://${fanboxId}-lvv.fanbox.cc`}
+                />
+              ) : null}
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+      {images.map(({ url }) => (
+        <Image
+          alt={name}
+          fill={true}
+          key={url}
+          onLoad={() => loadedIncrement()}
+          quality={100}
+          src={`${url}?fit=clamp&w=1000`}
+          style={{
+            opacity: 0,
+            overflow: "hidden",
+          }}
+        />
+      ))}
+    </>
   );
 }
