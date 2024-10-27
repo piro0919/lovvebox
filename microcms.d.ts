@@ -28,6 +28,10 @@ namespace MicroCMS {
     name: string;
     profile: string;
     twitterId: string;
+    voice?: {
+      fileSize: number;
+      url: string;
+    };
     youtubeId: string;
   };
 

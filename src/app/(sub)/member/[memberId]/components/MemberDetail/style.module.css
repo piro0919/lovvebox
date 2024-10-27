@@ -24,7 +24,10 @@
     grid-template: auto / repeat(2, 1fr);
   }
 
-  .refreshButtonWrapper {
+  .buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     inset: 0 auto auto 0;
     position: absolute;
     z-index: 2;

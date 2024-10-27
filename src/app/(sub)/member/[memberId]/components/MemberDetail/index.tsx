@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-ts-sdk";
 import { Zen_Maru_Gothic as ZenMaruGothic } from "next/font/google";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import ReactHowler from "react-howler";
 import { IoMdRefreshCircle } from "react-icons/io";
+import { PiPlayCircleFill, PiStopCircleFill } from "react-icons/pi";
 import { SocialIcon } from "react-social-icons";
-import { useCounter } from "usehooks-ts";
+import { useBoolean, useCounter } from "usehooks-ts";
 import styles from "./style.module.css";
 
 const zenMaruGothic = ZenMaruGothic({ subsets: ["latin"], weight: "500" });
@@ -35,6 +37,7 @@ export default function MemberDetail({
     name,
     profile,
     twitterId,
+    voice,
     youtubeId,
   },
 }: MemberDetailProps): JSX.Element {
@@ -49,6 +52,20 @@ export default function MemberDetail({
     () => loadedCount >= images.length,
     [images.length, loadedCount],
   );
+  const {
+    setFalse: offPlaying,
+    setTrue: onPlaying,
+    value: playing,
+  } = useBoolean(false);
+  const ref = useRef<ReactHowler>(null);
+
+  useEffect(() => {
+    if (playing || !ref.current) {
+      return;
+    }
+
+    ref.current.seek(0);
+  }, [playing]);
 
   return (
     <>
@@ -56,7 +73,7 @@ export default function MemberDetail({
         <div className={styles.container}>
           <motion.div
             animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
-            className={styles.refreshButtonWrapper}
+            className={styles.buttonsWrapper}
             initial={{ opacity: 0, y: 48 }}
             style={{
               borderColor: Color(color).lighten(0.125).toString(),
@@ -78,6 +95,23 @@ export default function MemberDetail({
             >
               <IoMdRefreshCircle color={color} size={48} />
             </motion.button>
+            {voice ? (
+              <>
+                <button onClick={() => (playing ? offPlaying() : onPlaying())}>
+                  {playing ? (
+                    <PiStopCircleFill color={color} size={48} />
+                  ) : (
+                    <PiPlayCircleFill color={color} size={48} />
+                  )}
+                </button>
+                <ReactHowler
+                  onEnd={() => offPlaying()}
+                  playing={playing}
+                  ref={ref}
+                  src={voice.url}
+                />
+              </>
+            ) : null}
           </motion.div>
           <motion.div
             animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
