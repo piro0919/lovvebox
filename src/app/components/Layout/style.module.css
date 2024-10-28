@@ -63,7 +63,8 @@
   display: block;
   height: 200%;
   inset: inherit;
-  mask: radial-gradient(var(--round-size), #0000 100%, #000);
+  mask-composite: exclude;
+  mask-image: radial-gradient(circle, transparent calc(100% / 3 * 2), #000 0%);
   position: absolute;
   width: 200%;
 }
