@@ -202,7 +202,7 @@
     background-blend-mode: lighten;
     background-color: rgba(255, 255, 255, 0.75);
     background-image: url("/background.png");
-    background-position: center 15%;
+    background-position: center 25%;
     background-size: cover;
     padding: min(120px, 24svmin) min(48px, 12svmin);
 

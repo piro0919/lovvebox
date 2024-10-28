@@ -301,7 +301,7 @@ export default function App({
                             alt={title}
                             fill={true}
                             quality={100}
-                            src={thumbnail ? thumbnail.url : "/background.png"}
+                            src={thumbnail ? thumbnail.url : "/no-image.png"}
                           />
                         </div>
                         <div className={`${goldman.className} ${styles.date}`}>
