@@ -46,10 +46,34 @@
 
 .container {
   /* stylelint-disable-next-line rule-empty-line-before */
+  .linkList {
+    display: grid;
+    gap: 12px;
+    grid-template: auto / repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .link2 {
+    background: var(--color-theme-frame);
+    border: 3px solid var(--color-theme-frame);
+    border-radius: 50dvmax;
+    color: #fff;
+    display: block;
+    font-size: 1.65rem;
+    font-weight: 700;
+    padding: 6px 0;
+    text-align: center;
+  }
+
+  .active {
+    background: #fff;
+    color: var(--color-theme-frame);
+  }
+
   .list {
     display: grid;
     gap: 0 min(36px, 4.5dvw);
     grid-template: auto / repeat(auto-fill, minmax(315px, 1fr));
+    margin: 30px 0 0;
   }
 
   .item {
