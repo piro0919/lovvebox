@@ -46,6 +46,9 @@ export default async function Page({
       },
     },
     endpoint: "news",
+    queries: {
+      fields: ["content", "createdAt", "publishedAt", "title"],
+    },
   });
 
   return <NewsDetail newsListDetailResponse={newsListDetailResponse} />;

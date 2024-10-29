@@ -13,21 +13,18 @@ import styles from "./style.module.css";
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
 export type NewsDetailProps = {
-  newsListDetailResponse: MicroCMS.News &
-    MicroCMSContentId &
-    MicroCMSDate & {
-      [key: string]: unknown;
-    };
+  newsListDetailResponse: Pick<
+    MicroCMS.News &
+      MicroCMSContentId &
+      MicroCMSDate & {
+        [key: string]: unknown;
+      },
+    "content" | "createdAt" | "publishedAt" | "title"
+  >;
 };
 
 export default function NewsDetail({
-  newsListDetailResponse: {
-    content,
-    createdAt,
-    pastPublishedAt,
-    publishedAt,
-    title,
-  },
+  newsListDetailResponse: { content, createdAt, publishedAt, title },
 }: NewsDetailProps): JSX.Element {
   return (
     <div className={styles.wrapper}>
@@ -43,9 +40,7 @@ export default function NewsDetail({
       >
         <div>
           <div className={`${goldman.className} ${styles.date}`}>
-            {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
-              "YYYY.MM.DD",
-            )}
+            {dayjs(publishedAt ?? createdAt).format("YYYY.MM.DD")}
           </div>
           <h1 className={styles.h1}>{title}</h1>
         </div>

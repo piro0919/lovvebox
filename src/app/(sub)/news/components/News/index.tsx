@@ -22,12 +22,7 @@ export type NewsProps = {
   newsListResponse: Omit<NewsListResponse, "contents"> & {
     contents: Pick<
       NewsListResponse["contents"][number],
-      | "createdAt"
-      | "id"
-      | "pastPublishedAt"
-      | "publishedAt"
-      | "thumbnail"
-      | "title"
+      "createdAt" | "id" | "publishedAt" | "thumbnail" | "title"
     >[];
   };
 };
@@ -61,14 +56,7 @@ export default function News({
       >
         <ul className={styles.list}>
           {newsListContents.map(
-            ({
-              createdAt,
-              id,
-              pastPublishedAt,
-              publishedAt,
-              thumbnail,
-              title,
-            }) => (
+            ({ createdAt, id, publishedAt, thumbnail, title }) => (
               <li className={styles.item} key={title}>
                 <Link className={styles.link} href={`/news/${id}`}>
                   <div className={styles.thumbnail}>
@@ -80,9 +68,7 @@ export default function News({
                     />
                   </div>
                   <div className={`${goldman.className} ${styles.date}`}>
-                    {dayjs(pastPublishedAt ?? publishedAt ?? createdAt).format(
-                      "YYYY.MM.DD",
-                    )}
+                    {dayjs(publishedAt ?? createdAt).format("YYYY.MM.DD")}
                   </div>
                   <div className={styles.title}>{title}</div>
                 </Link>

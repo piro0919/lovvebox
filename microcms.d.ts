@@ -37,7 +37,6 @@ namespace MicroCMS {
 
   type News = {
     content: string;
-    pastPublishedAt?: Date;
     thumbnail?: Image;
     title: string;
   };
