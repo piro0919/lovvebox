@@ -1,4 +1,5 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 import { backOut } from "eases";
 import { motion } from "framer-motion";
@@ -8,11 +9,13 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
+import { getNewsListDetail } from "./actions";
 import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
 export type NewsDetailProps = {
+  newsId: string;
   newsListDetailResponse: Pick<
     MicroCMS.News &
       MicroCMSContentId &
@@ -24,8 +27,17 @@ export type NewsDetailProps = {
 };
 
 export default function NewsDetail({
-  newsListDetailResponse: { content, createdAt, publishedAt, title },
+  newsId,
+  newsListDetailResponse: initialNewsListDetailResponse,
 }: NewsDetailProps): JSX.Element {
+  const {
+    data: { content, createdAt, publishedAt, title },
+  } = useQuery({
+    initialData: initialNewsListDetailResponse,
+    queryFn: ({ queryKey: [, newsId] }) => getNewsListDetail({ newsId }),
+    queryKey: ["getNewsListDetail", newsId],
+  });
+
   return (
     <div className={styles.wrapper}>
       <motion.div

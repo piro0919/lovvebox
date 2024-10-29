@@ -41,8 +41,8 @@ export default async function Page({
     contentId: newsId,
     customRequestInit: {
       next: {
-        // 24 時間ごと
-        revalidate: 86400,
+        // 1 時間ごと
+        revalidate: 3600,
       },
     },
     endpoint: "news",
@@ -51,5 +51,10 @@ export default async function Page({
     },
   });
 
-  return <NewsDetail newsListDetailResponse={newsListDetailResponse} />;
+  return (
+    <NewsDetail
+      newsId={newsId}
+      newsListDetailResponse={newsListDetailResponse}
+    />
+  );
 }

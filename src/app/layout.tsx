@@ -10,6 +10,7 @@ import "react-modern-drawer/dist/index.css";
 import "ress";
 import "swiper/css";
 import Layout from "./components/Layout";
+import Providers from "./components/Providers";
 import "./globals.css";
 
 dayjs.locale("ja");
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={mPlus1.className}>
-        <Layout>{children}</Layout>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
         <Analytics />
         <SpeedInsights />
       </body>

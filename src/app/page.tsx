@@ -39,8 +39,8 @@ export default async function Page(): Promise<JSX.Element> {
   const newsListResponse = await client.getList({
     customRequestInit: {
       next: {
-        // 24 時間ごと
-        revalidate: 86400,
+        // 1 時間ごと
+        revalidate: 3600,
       },
     },
     endpoint: "news",
