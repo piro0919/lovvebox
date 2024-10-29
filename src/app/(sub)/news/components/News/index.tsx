@@ -6,6 +6,10 @@ import { MicroCMSGetListResponse } from "microcms-ts-sdk";
 import { Goldman, Racing_Sans_One as RacingSansOne } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
+import { useMemo } from "react";
+import ResponsivePagination from "react-responsive-pagination";
 import styles from "./style.module.css";
 
 const goldman = Goldman({ subsets: ["latin"], weight: ["700"] });
@@ -28,8 +32,16 @@ export type NewsProps = {
 };
 
 export default function News({
-  newsListResponse: { contents: newsListContents },
+  newsListResponse: { contents: newsListContents, totalCount },
 }: NewsProps): JSX.Element {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentPage = useMemo(() => {
+    const page = searchParams.get("page");
+
+    return typeof page === "string" ? parseInt(page, 10) : 1;
+  }, [searchParams]);
+
   return (
     <div className={styles.wrapper}>
       <motion.div
@@ -76,6 +88,13 @@ export default function News({
             ),
           )}
         </ul>
+        <div className={styles.responsivePaginationWrapper}>
+          <ResponsivePagination
+            current={currentPage}
+            onPageChange={(page) => router.push(`/news?page=${page}`)}
+            total={Math.ceil(totalCount / 9)}
+          />
+        </div>
       </motion.div>
     </div>
   );

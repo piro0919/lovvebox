@@ -78,3 +78,19 @@
 .title {
   font-size: 1.65rem;
 }
+
+.responsivePaginationWrapper {
+  --pagination-active-bg: var(--color-theme-frame);
+  --pagination-active-border-color: var(--color-theme-frame);
+  --pagination-border-color: var(--color-theme-frame);
+  --pagination-color: var(--color-theme-frame);
+  --pagination-disabled-border-color: var(--color-theme-frame);
+  --pagination-disabled-color: var(--color-theme-frame);
+  --pagination-font-size: 2rem;
+  --pagination-hover-border-color: var(--color-theme-frame);
+  --pagination-hover-color: var(--color-theme-frame);
+  --pagination-padding-x: 1.5rem;
+  --pagination-padding-y: 0.75rem;
+
+  padding: 60px 0 0;
+}

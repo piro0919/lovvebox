@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { M_PLUS_1 as MPLUS1 } from "next/font/google";
 import "pattern.css/dist/pattern.css";
 import "react-modern-drawer/dist/index.css";
+import "react-responsive-pagination/themes/classic.css";
 import "ress";
 import "swiper/css";
 import Layout from "./components/Layout";

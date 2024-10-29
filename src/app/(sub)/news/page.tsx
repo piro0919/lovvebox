@@ -9,7 +9,18 @@ export const metadata: Metadata = {
   title: "NEWS",
 };
 
-export default async function Page(): Promise<JSX.Element> {
+type PageProps = {
+  params: { newsId: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function Page({
+  searchParams: { page = "1" },
+}: PageProps): Promise<JSX.Element> {
+  if (typeof page !== "string") {
+    throw new Error("page is not string");
+  }
+
   const newsListResponse = await client.getList({
     customRequestInit: {
       next: {
@@ -20,7 +31,8 @@ export default async function Page(): Promise<JSX.Element> {
     endpoint: "news",
     queries: {
       fields: ["createdAt", "id", "publishedAt", "thumbnail", "title"],
-      limit: 20,
+      limit: 9,
+      offset: (parseInt(page, 10) - 1) * 9,
       orders: "-publishedAt",
     },
   });
