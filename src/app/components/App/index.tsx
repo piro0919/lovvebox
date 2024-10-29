@@ -180,6 +180,7 @@ export default function App({
               muted={true}
               onReady={() => onReady()}
               playing={ready}
+              playsinline={true}
               url={movie}
               width="100%"
             />
