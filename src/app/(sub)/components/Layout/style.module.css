@@ -6,7 +6,7 @@
   padding: 12px 36px 12px 18px;
   position: sticky;
   top: 12px;
-  z-index: 2;
+  z-index: 3;
 
   @media (width <= 980px) {
     padding: 6px;
