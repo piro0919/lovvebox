@@ -67,6 +67,11 @@
     object-position: center top;
   }
 
+  .detailsWrapper {
+    display: grid;
+    gap: 24px;
+  }
+
   .detail {
     backdrop-filter: blur(1px);
     background: rgba(255, 255, 255, 0.95);
@@ -156,5 +161,44 @@
   .socialIcon {
     height: 42px !important;
     width: 42px !important;
+  }
+
+  .detail:has(.reactPlayer) {
+    display: grid;
+    gap: 36px;
+    padding-top: 36px;
+    text-align: center;
+  }
+
+  .h2 {
+    color: #fff;
+    font-size: 3.3rem;
+    font-weight: 700;
+    text-shadow:
+      2px 0 var(--color-theme-main),
+      -2px 0 var(--color-theme-main),
+      0 -2px var(--color-theme-main),
+      0 2px var(--color-theme-main),
+      2px 2px var(--color-theme-main),
+      -2px 2px var(--color-theme-main),
+      2px -2px var(--color-theme-main),
+      -2px -2px var(--color-theme-main),
+      1px 2px var(--color-theme-main),
+      -1px 2px var(--color-theme-main),
+      1px -2px var(--color-theme-main),
+      -1px -2px var(--color-theme-main),
+      2px 1px var(--color-theme-main),
+      -2px 1px var(--color-theme-main),
+      2px -1px var(--color-theme-main),
+      -2px -1px var(--color-theme-main),
+      6px 6px 0 rgba(238, 130, 169, 0.5);
+
+    @media (width <= 980px) {
+      font-size: max(2.4rem, 4.8dvw);
+    }
+  }
+
+  .reactPlayer {
+    aspect-ratio: 16 / 9;
   }
 }

@@ -57,6 +57,7 @@ export default async function Page({
         "images",
         "name",
         "profile",
+        "recommendedVideo",
         "twitterId",
         "voice",
         "youtubeId",

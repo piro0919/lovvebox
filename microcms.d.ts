@@ -27,6 +27,7 @@ namespace MicroCMS {
     images: Image[];
     name: string;
     profile: string;
+    recommendedVideo?: string;
     twitterId: string;
     voice?: {
       fileSize: number;
