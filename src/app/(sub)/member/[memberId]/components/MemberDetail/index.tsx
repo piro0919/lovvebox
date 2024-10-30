@@ -201,22 +201,22 @@ export default function MemberDetail({
                   className={`${zenMaruGothic.className} ${styles.name}`}
                   style={{
                     textShadow: `2px 0 ${color},
-                  -2px 0 ${color},
-                  0 -2px ${color},
-                  0 2px ${color},
-                  2px 2px ${color},
-                  -2px 2px ${color},
-                  2px -2px ${color},
-                  -2px -2px ${color},
-                  1px 2px ${color},
-                  -1px 2px ${color},
-                  1px -2px ${color},
-                  -1px -2px ${color},
-                  2px 1px ${color},
-                  -2px 1px ${color},
-                  2px -1px ${color},
-                  -2px -1px ${color},
-                  6px 6px 0 ${Color(color).alpha(0.5).toString()}`,
+                    -2px 0 ${color},
+                    0 -2px ${color},
+                    0 2px ${color},
+                    2px 2px ${color},
+                    -2px 2px ${color},
+                    2px -2px ${color},
+                    -2px -2px ${color},
+                    1px 2px ${color},
+                    -1px 2px ${color},
+                    1px -2px ${color},
+                    -1px -2px ${color},
+                    2px 1px ${color},
+                    -2px 1px ${color},
+                    2px -1px ${color},
+                    -2px -1px ${color},
+                    6px 6px 0 ${Color(color).alpha(0.5).toString()}`,
                   }}
                 >
                   {name}
@@ -292,7 +292,28 @@ export default function MemberDetail({
                   color,
                 }}
               >
-                <h2 className={`${racingSansOne.className} ${styles.h2}`}>
+                <h2
+                  className={`${racingSansOne.className} ${styles.h2}`}
+                  style={{
+                    textShadow: `2px 0 ${color},
+                    -2px 0 ${color},
+                    0 -2px ${color},
+                    0 2px ${color},
+                    2px 2px ${color},
+                    -2px 2px ${color},
+                    2px -2px ${color},
+                    -2px -2px ${color},
+                    1px 2px ${color},
+                    -1px 2px ${color},
+                    1px -2px ${color},
+                    -1px -2px ${color},
+                    2px 1px ${color},
+                    -2px 1px ${color},
+                    2px -1px ${color},
+                    -2px -1px ${color},
+                    6px 6px 0 ${Color(color).alpha(0.5).toString()}`,
+                  }}
+                >
                   Recommended Video
                 </h2>
                 <div className={styles.reactPlayer}>
