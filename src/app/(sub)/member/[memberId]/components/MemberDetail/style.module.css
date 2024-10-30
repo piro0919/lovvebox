@@ -70,7 +70,6 @@
   .detailsWrapper {
     display: grid;
     gap: 24px;
-    width: 100%;
   }
 
   .detail {
