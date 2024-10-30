@@ -97,6 +97,17 @@
     position: absolute;
   }
 
+  .background::before {
+    background: url("/pattern.png");
+    background-position: center;
+    background-size: 125%;
+    content: "";
+    display: block;
+    inset: 0;
+    opacity: 0.75;
+    position: absolute;
+  }
+
   .sakura {
     inset: 25% auto auto 0;
     position: absolute;
