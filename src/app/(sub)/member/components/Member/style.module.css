@@ -78,6 +78,8 @@
 
   .item {
     aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
     position: relative;
   }
 
