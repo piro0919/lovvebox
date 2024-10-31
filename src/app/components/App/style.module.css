@@ -337,7 +337,7 @@
   .image {
     filter: drop-shadow(6px 6px rgba(0, 0, 0, 0.5));
     object-fit: contain;
-    scale: 0.975;
+    scale: 0.95;
   }
 
   .name {
