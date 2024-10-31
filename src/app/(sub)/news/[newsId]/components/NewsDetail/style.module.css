@@ -70,4 +70,5 @@
 
 .reactMarkdown > * {
   margin-bottom: 3rem;
+  word-break: break-all;
 }
