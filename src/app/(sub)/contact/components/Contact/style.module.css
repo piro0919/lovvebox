@@ -124,8 +124,8 @@
 }
 
 .button {
-  background: var(--color-theme-main);
-  border: 2px solid var(--color-theme-main);
+  background: var(--color-theme-frame);
+  border: 2px solid var(--color-theme-frame);
   border-radius: 50dvmax;
   color: #fff;
   font-size: 1.8rem;

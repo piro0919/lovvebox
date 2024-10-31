@@ -12,6 +12,10 @@ const menuList = [
     text: "FAQ",
   },
   {
+    href: "https://audition.lovvebox.com/",
+    text: "AUDITION",
+  },
+  {
     href: "https://lovvebox.booth.pm/",
     text: "STORE",
   },

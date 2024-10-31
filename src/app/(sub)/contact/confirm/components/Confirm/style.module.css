@@ -82,15 +82,15 @@
 }
 
 .button {
-  border: 2px solid var(--color-theme-main);
+  border: 2px solid var(--color-theme-frame);
   border-radius: 50dvmax;
-  color: var(--color-theme-main);
+  color: var(--color-theme-frame);
   font-size: 1.8rem;
   font-weight: 700;
   padding: 12px 48px;
 }
 
 .button[type="submit"] {
-  background: var(--color-theme-main);
+  background: var(--color-theme-frame);
   color: #fff;
 }

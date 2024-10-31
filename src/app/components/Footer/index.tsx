@@ -39,7 +39,7 @@ export default function Footer(): JSX.Element {
           </Link>
         </li>
       </ul>
-      <div className={styles.copyright}>&copy; 2021 Blackbox</div>
+      <div className={styles.copyright}>&copy; 2021 Blackbox Inc.</div>
     </footer>
   );
 }
