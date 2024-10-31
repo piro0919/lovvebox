@@ -60,6 +60,7 @@ export default function News({
         animate={{ opacity: 1, y: 0 }}
         className={styles.container}
         initial={{ opacity: 0, y: 48 }}
+        key={currentPage}
         transition={{
           delay: 0.6,
           duration: 0.5,
