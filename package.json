@@ -57,7 +57,7 @@
     "@types/color": "4.2.0",
     "@types/eases": "1.0.4",
     "@types/html-to-text": "9.0.4",
-    "@types/node": "^20",
+    "@types/node": "^22.0.0",
     "@types/nodemailer": "6.4.16",
     "@types/react": "^18",
     "@types/react-dom": "^18",
