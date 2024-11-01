@@ -54,6 +54,7 @@
 
   .imageWrapper {
     max-height: 125svh;
+    overflow: hidden;
     position: relative;
     width: 150%;
 

@@ -47,7 +47,7 @@
 .list {
   display: grid;
   gap: min(24px, 4.5dvw);
-  grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+  grid-template: auto / repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .item {
