@@ -286,8 +286,8 @@
   }
 
   .swiper {
+    /* width: calc(100dvw - 12px * 2); */
     padding: 0 max(calc(((100dvw - 12px * 2) - 1200px) / 2), min(48px, 4.5dvw));
-    width: calc(100dvw - 12px * 2);
   }
 
   .swiperSlide {
