@@ -1,6 +1,5 @@
 "use client";
 import { useLockBodyScroll } from "@custom-react-hooks/use-lock-body-scroll";
-import NoSSR from "@mpth/react-no-ssr";
 import Color from "color";
 import dayjs from "dayjs";
 import { backOut } from "eases";
@@ -322,100 +321,97 @@ export default function App({
               </Link>
             </div>
             <div className={styles.swiperWrapper} ref={ref}>
-              <NoSSR>
-                <Swiper
-                  breakpoints={{
-                    575: {
-                      slidesPerView: 2.75,
-                      spaceBetween: 24,
-                    },
-                    775: {
-                      slidesPerView: 3.75,
-                      spaceBetween: 36,
-                    },
-                    975: {
-                      slidesPerView: 4.75,
-                      spaceBetween: 36,
-                    },
-                  }}
-                  className={styles.swiper}
-                  modules={[Navigation]}
-                  navigation={{
-                    nextEl: styles.swiperButtonNext,
-                    prevEl: styles.swiperButtonPrev,
-                  }}
-                  slidesPerView={1.75}
-                  spaceBetween={12}
-                  style={{
-                    width: `calc(100dvw - (12px * 2 + ${scrollbarWidth}px))`,
-                  }}
-                >
-                  {memberListContents
-                    .map(
-                      (
-                        { color, graduation, id, images: [{ url }], name },
-                        index,
-                      ) => (
-                        <SwiperSlide
-                          className={styles.swiperSlide}
-                          key={id}
-                          style={{ zIndex: index }}
-                        >
-                          <Link className={styles.link} href={`/member/${id}`}>
-                            <div
-                              className={styles.background}
-                              style={{ background: color }}
+              <Swiper
+                breakpoints={{
+                  575: {
+                    slidesPerView: 2.75,
+                    spaceBetween: 24,
+                  },
+                  775: {
+                    slidesPerView: 3.75,
+                    spaceBetween: 36,
+                  },
+                  975: {
+                    slidesPerView: 4.75,
+                    spaceBetween: 36,
+                  },
+                }}
+                className={styles.swiper}
+                modules={[Navigation]}
+                navigation={{
+                  nextEl: styles.swiperButtonNext,
+                  prevEl: styles.swiperButtonPrev,
+                }}
+                slidesPerView={1.75}
+                spaceBetween={12}
+                style={{
+                  width: `calc(100dvw - (12px * 2 + ${scrollbarWidth}px))`,
+                }}
+              >
+                {memberListContents
+                  .map(
+                    (
+                      { color, graduation, id, images: [{ url }], name },
+                      index,
+                    ) => (
+                      <SwiperSlide
+                        className={styles.swiperSlide}
+                        key={id}
+                        style={{ zIndex: index }}
+                      >
+                        <Link className={styles.link} href={`/member/${id}`}>
+                          <div
+                            className={styles.background}
+                            style={{ background: color }}
+                          />
+                          {graduation ? (
+                            <Image
+                              alt=""
+                              className={styles.sakura}
+                              height={72}
+                              src="/sakura.png"
+                              width={72}
                             />
-                            {graduation ? (
-                              <Image
-                                alt=""
-                                className={styles.sakura}
-                                height={72}
-                                src="/sakura.png"
-                                width={72}
-                              />
-                            ) : null}
-                            <motion.div
-                              animate={
-                                isInView && ready
-                                  ? { opacity: graduation ? 0.5 : 1, scale: 1 }
-                                  : { opacity: 0, scale: 0.75 }
-                              }
-                              className={styles.imageWrapper}
-                              initial={{ opacity: 0, scale: 0.75 }}
-                              transition={{
-                                delay:
-                                  0.5 +
-                                  (memberListContents.length - index) * 0.1,
-                                duration: 0.5,
-                                ease: backOut,
-                              }}
-                            >
-                              <Image
-                                alt={name}
-                                className={styles.image}
-                                fill={true}
-                                quality={100}
-                                src={`${url}?fit=clamp&w=600`}
-                              />
-                            </motion.div>
-                            <div
-                              className={`${mPlus1.className} ${styles.name}`}
-                              style={{
-                                textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
-                              }}
-                            >
-                              {name}
-                            </div>
-                          </Link>
-                        </SwiperSlide>
-                      ),
-                    )
-                    .reverse()}
-                  <SwiperButtonPrev />
-                  <SwiperButtonNext />
-                </Swiper>
-              </NoSSR>
+                          ) : null}
+                          <motion.div
+                            animate={
+                              isInView && ready
+                                ? { opacity: graduation ? 0.5 : 1, scale: 1 }
+                                : { opacity: 0, scale: 0.75 }
+                            }
+                            className={styles.imageWrapper}
+                            initial={{ opacity: 0, scale: 0.75 }}
+                            transition={{
+                              delay:
+                                0.5 + (memberListContents.length - index) * 0.1,
+                              duration: 0.5,
+                              ease: backOut,
+                            }}
+                          >
+                            <Image
+                              alt={name}
+                              className={styles.image}
+                              fill={true}
+                              quality={100}
+                              src={`${url}?fit=clamp&w=600`}
+                            />
+                          </motion.div>
+                          <div
+                            className={`${mPlus1.className} ${styles.name}`}
+                            style={{
+                              textShadow: `0px 1px ${color}, 1px 0px ${color}, 0px -1px ${color}, -1px 0px ${color}, 3px 3px ${Color(color).alpha(0.5).toString()}`,
+                            }}
+                          >
+                            {name}
+                          </div>
+                        </Link>
+                      </SwiperSlide>
+                    ),
+                  )
+                  .reverse()}
+                <SwiperButtonPrev />
+                <SwiperButtonNext />
+              </Swiper>
             </div>
           </Article>
         </main>
