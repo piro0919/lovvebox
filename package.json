@@ -9,7 +9,7 @@
     "@tsparticles/slim": "3.8.1",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "1.2.0",
-    "color": "4.2.3",
+    "color": "5.0.0",
     "dayjs": "1.11.13",
     "eases": "1.0.8",
     "framer-motion": "12.4.3",
